@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_login"
+        app:cardCornerRadius="@dimen/cardview_default_radius"
+        android:layout_centerInParent="true"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content">
+        <!--android:transitionName="login"-->
+        <LinearLayout
+            android:layout_margin="20dp"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="登陆"
+                android:textColor="#000"
+                android:textSize="25dp"
+                android:layout_marginBottom="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/register_nickname"
+                android:visibility="gone"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:drawableStart="@drawable/ic_dashboard_black_24dp"
+                android:drawablePadding="10dp"
+                android:background="@null"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="昵称"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/login_email"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:drawablePadding="10dp"
+                android:background="@null"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_dashboard_black_24dp"
+                android:hint="邮箱"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:id="@+id/login_password"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:drawablePadding="10dp"
+                android:background="@null"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_dashboard_black_24dp"
+                android:hint="密码"
+                android:inputType="textPassword" />
+
+            <EditText
+                android:id="@+id/register_confrom"
+                android:visibility="gone"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:drawablePadding="10dp"
+                android:background="@null"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_dashboard_black_24dp"
+                android:hint="确认密码"
+                android:inputType="textPassword" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Button
+                    android:layout_weight="1"
+                    android:id="@+id/btn_login"
+                    android:onClick="loginOperation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:typeface="monospace"
+                    android:text="SIGN IN" />
+                <Button
+                    android:layout_weight="1"
+                    android:id="@+id/btn_register"
+                    android:onClick="registerOperation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:typeface="monospace"
+                    android:text="SIGN UP" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+</RelativeLayout>

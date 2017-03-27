@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Venue</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Scan</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_person">Person</string>
+    <string name="person_1">消息</string>
+    <string name="person_2">收藏</string>
+    <string name="person_3">时光轴</string>
+    <string name="person_4">设置</string>
+    <string name="person_5">关于</string>
+</resources>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:layout_marginBottom="@dimen/main_card_margin_vertical"
+    android:layout_marginLeft="@dimen/main_card_margin_horizontal"
+    android:layout_marginRight="@dimen/main_card_margin_horizontal"
+    android:layout_marginTop="@dimen/main_card_margin_vertical"
+    android:clickable="true"
+    android:background="?attr/selectableItemBackground"
+    android:foreground="?attr/selectableItemBackground"
+    card_view:cardCornerRadius="@dimen/card_recycler_corner_radius"
+    card_view:cardElevation="@dimen/card_recycler_elevation">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.flaviofaria.kenburnsview.KenBurnsView
+            android:id="@+id/imageKenBurns"
+            android:src="@drawable/tesst"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <!--<ImageView-->
+            <!--android:id="@+id/img_detail_bg"-->
+            <!--android:src="@drawable/tesst"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:adjustViewBounds="true"-->
+            <!--android:scaleType="centerCrop" />-->
+        <TextView
+            android:id="@+id/tv_detail_title"
+            android:maxLines="1"
+            android:maxWidth="300dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/card_title_margin"
+            android:layout_marginRight="@dimen/card_title_margin"
+            android:layout_marginTop="@dimen/card_title_margin_top"
+            android:text="Title goes here"
+            android:textColor="@color/yellow_primary"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tv_detail_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/yellow_primary_dark"
+            android:maxLines="5"
+            android:layout_below="@+id/tv_detail_title"
+            android:layout_marginBottom="@dimen/card_subtitle_margin"
+            android:layout_marginLeft="@dimen/card_subtitle_margin"
+            android:layout_marginRight="@dimen/card_subtitle_margin"
+            android:layout_marginTop="@dimen/card_button_margin"
+            android:text="Subtitle here" />
+
+        <LinearLayout
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_weight="1"
+                android:id="@+id/btn_prise"
+                android:button="@null"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="点赞"
+                android:textColor="@color/yellow_primary"
+                android:layout_below="@+id/tv_detail_subtitle"
+                android:layout_margin="@dimen/card_button_margin"
+                android:layout_alignParentStart="true" />
+
+            <Button
+                android:layout_weight="1"
+                android:id="@+id/btn_collect"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/card_button_margin"
+                android:text="收藏"
+                android:textColor="@color/yellow_primary" />
+
+            <Button
+                android:layout_weight="1"
+                android:id="@+id/btn_talk"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/card_button_margin"
+                android:layout_marginTop="@dimen/card_button_margin"
+                android:text="评论"
+                android:textColor="@color/yellow_primary" />
+        </LinearLayout>
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
