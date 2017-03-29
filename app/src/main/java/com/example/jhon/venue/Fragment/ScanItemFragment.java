@@ -16,12 +16,15 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.animation.BaseAnimation;
 import com.example.jhon.venue.Adapter.QuickAdapter;
 import com.example.jhon.venue.Bean.Test;
+import com.example.jhon.venue.Entity.HotDataServer;
 import com.example.jhon.venue.R;
 import com.example.jhon.venue.Util.TransitionHelper;
 import com.example.jhon.venue.View.Detail_Activity;
@@ -48,6 +51,8 @@ public class ScanItemFragment extends Fragment {
 
     private List<Test> list;
 
+    private AlphaAnimation alphaAnimation;
+
     public static ScanItemFragment getInstance() {
         ScanItemFragment fra = new ScanItemFragment();
         return fra;
@@ -58,6 +63,10 @@ public class ScanItemFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.scan_recycle_layout, container, false);
         ButterKnife.bind(this, v);
+        if (alphaAnimation==null){
+            alphaAnimation=new AlphaAnimation(0,1);
+            alphaAnimation.setDuration(1000);
+        }
         initSWL();
         initRecycleView();
         return v;
@@ -71,7 +80,7 @@ public class ScanItemFragment extends Fragment {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        list.addAll(0,addSampleData(2));
+                        list.addAll(0, HotDataServer.getHotData(2));
                         quickAdapter.notifyDataSetChanged();
                         srlScan.setRefreshing(false);
                     }
@@ -82,7 +91,7 @@ public class ScanItemFragment extends Fragment {
 
     private void initRecycleView() {
         recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
-        quickAdapter = new QuickAdapter(getContext(),getSampleData(20));
+        quickAdapter = new QuickAdapter(getContext(),HotDataServer.getHotData(20));
         recyclerview.setAdapter(quickAdapter);
 
         quickAdapter.isFirstOnly(false);
@@ -101,18 +110,35 @@ public class ScanItemFragment extends Fragment {
             public boolean onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
 //                img_detail_bg
                 switch (view.getId()){
-                    case R.id.btn_prise:
-                        if (TextUtils.equals(((Button)adapter.getViewByPosition(position,R.id.btn_prise)).getText().toString()
-                                ,"点赞")){
-                            ((Button)adapter.getViewByPosition(position,R.id.btn_prise)).setText("已点赞");
+                    case R.id.img_prise:
+                        if (TextUtils.equals(((ImageView)adapter.getViewByPosition(position,R.id.img_prise)).getTag().toString()
+                                ,"not_prised")){
+                            Snackbar.make(view,"已点赞",Snackbar.LENGTH_SHORT).show();
+                            ((ImageView)adapter.getViewByPosition(position,R.id.img_prise)).setImageResource(R.drawable.button_favo_down);
+                            ((ImageView)adapter.getViewByPosition(position,R.id.img_prise)).setTag("prised");
+                            ((ImageView)adapter.getViewByPosition(position,R.id.img_prise)).startAnimation(alphaAnimation);
                         }else {
-                            ((Button)adapter.getViewByPosition(position,R.id.btn_prise)).setText("点赞");
+                            Snackbar.make(view,"取消点赞",Snackbar.LENGTH_SHORT).show();
+                            ((ImageView)adapter.getViewByPosition(position,R.id.img_prise)).setImageResource(R.drawable.button_favo_up);
+                            ((ImageView)adapter.getViewByPosition(position,R.id.img_prise)).setTag("not_prised");
+                            ((ImageView)adapter.getViewByPosition(position,R.id.img_prise)).startAnimation(alphaAnimation);
                         }
                         break;
-                    case R.id.btn_collect:
-
+                    case R.id.img_collect:
+                        if (TextUtils.equals(((ImageView)adapter.getViewByPosition(position,R.id.img_collect)).getTag().toString()
+                                ,"not_collected")){
+                            Snackbar.make(view,"已收藏",Snackbar.LENGTH_SHORT).show();
+                            ((ImageView)adapter.getViewByPosition(position,R.id.img_collect)).setImageResource(R.drawable.button_bookmark_down);
+                            ((ImageView)adapter.getViewByPosition(position,R.id.img_collect)).setTag("collected");
+                            ((ImageView)adapter.getViewByPosition(position,R.id.img_collect)).startAnimation(alphaAnimation);
+                        }else {
+                            Snackbar.make(view,"取消收藏",Snackbar.LENGTH_SHORT).show();
+                            ((ImageView)adapter.getViewByPosition(position,R.id.img_collect)).setImageResource(R.drawable.button_bookmark_up);
+                            ((ImageView)adapter.getViewByPosition(position,R.id.img_collect)).setTag("not_collected");
+                            ((ImageView)adapter.getViewByPosition(position,R.id.img_collect)).startAnimation(alphaAnimation);
+                        }
                         break;
-                    case R.id.btn_talk:
+                    case R.id.img_talk:
 
                         break;
                     case R.id.tv_detail_title:
@@ -152,24 +178,4 @@ public class ScanItemFragment extends Fragment {
             }
         }, recyclerview);
     }
-
-    public List<Test> getSampleData(int lenth) {
-        list = new ArrayList<>();
-        for (int i = 0; i < lenth; i++) {
-            Test status = new Test();
-            status.setName("Chad" + i);
-            list.add(status);
-        }
-        return list;
-    }
-    public List<Test> addSampleData(int lenth) {
-        List<Test> list = new ArrayList<>();
-        for (int i = 0; i < lenth; i++) {
-            Test status = new Test();
-            status.setName("ggg" + i);
-            list.add(status);
-        }
-        return list;
-    }
-
 }

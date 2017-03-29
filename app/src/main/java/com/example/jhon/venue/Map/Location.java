@@ -236,11 +236,8 @@ public class Location implements LocationSource,AMapLocationListener {
     }
 
     public void startLocation(){
-        //设置缩放级别
-        aMap.moveCamera(CameraUpdateFactory.zoomTo(15));
-        //将地图移动到定位点
-        aMap.moveCamera(CameraUpdateFactory.changeLatLng(latLng));
-//        mLocationClient.startLocation();//启动定位
+        mLocationClient.startLocation();//启动定位
+        isFirst=true;
     }
 
     public void stopLocation(){

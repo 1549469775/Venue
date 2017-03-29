@@ -10,14 +10,17 @@ import android.support.v4.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.jhon.venue.BaseActivity;
-import com.example.jhon.venue.Fragment.FragmentTest;
+import com.example.jhon.venue.Bean.Preference;
 import com.example.jhon.venue.Fragment.MapFragment;
 import com.example.jhon.venue.Fragment.PersonFragment;
 import com.example.jhon.venue.Fragment.ScanFragment;
-import com.example.jhon.venue.Operation.AppLogin;
+import com.example.jhon.venue.Interface.JudgeListener;
+import com.example.jhon.venue.Modle.LoginModle;
 import com.example.jhon.venue.R;
+import com.example.jhon.venue.UI.UIProgressDialog;
 import com.example.jhon.venue.Util.TransitionHelper;
 
 import butterknife.BindView;
@@ -42,20 +45,36 @@ public class MainActivity extends BaseActivity {
         ButterKnife.bind(this);
 //        setupToolbar(false,true);
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        if (mapFragment == null) {
-            mapFragment = MapFragment.newInstance();
-            fragmentTransaction.add(R.id.content, mapFragment);
-            fragmentTransaction.commit();
-        }
+        hideFragment();
+        fragmentTransaction.show(mapFragment);
+        fragmentTransaction.commit();
+
         //BottomNavigationView
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
+        if (Preference.getAutoLogin(this)){
+            LoginModle.loginByApiToken(this, new JudgeListener() {
+                @Override
+                public void onSuccess() {
+                    Toast.makeText(getApplicationContext(),"已登陆",Toast.LENGTH_SHORT).show();
+                }
 
+                @Override
+                public void onError(Exception e) {
+                    Toast.makeText(getApplicationContext(),"登陆失败",Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 
     @Override
     public void initOperation() {
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
     }
 
     @Override
@@ -72,30 +91,30 @@ public class MainActivity extends BaseActivity {
             hideFragment();
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    if (mapFragment == null) {
-                        mapFragment = MapFragment.newInstance();
-                        fragmentTransaction.add(R.id.content, mapFragment);
-                    } else {
+//                    if (mapFragment == null) {
+//                        mapFragment = MapFragment.newInstance();
+//                        fragmentTransaction.add(R.id.content, mapFragment);
+//                    } else {
                         fragmentTransaction.show(mapFragment);
-                    }
+//                    }
                     break;
 //                    return true;
                 case R.id.navigation_dashboard:
-                    if (scanFragment == null) {
-                        scanFragment = new ScanFragment();
-                        fragmentTransaction.add(R.id.content, scanFragment);
-                    } else {
+//                    if (scanFragment == null) {
+//                        scanFragment = new ScanFragment();
+//                        fragmentTransaction.add(R.id.content, scanFragment);
+//                    } else {
                         fragmentTransaction.show(scanFragment);
-                    }
+//                    }
                     break;
 //                    return true;
                 case R.id.navigation_person:
-                    if (personFragment == null) {
-                        personFragment = PersonFragment.newInstance();
-                        fragmentTransaction.add(R.id.content, personFragment);
-                    } else {
+//                    if (personFragment == null) {
+//                        personFragment = PersonFragment.newInstance();
+//                        fragmentTransaction.add(R.id.content, personFragment);
+//                    } else {
                         fragmentTransaction.show(personFragment);
-                    }
+//                    }
                     break;
 //                    return true;
             }
@@ -107,6 +126,18 @@ public class MainActivity extends BaseActivity {
 
     private void hideFragment() {
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        if (scanFragment == null) {
+            scanFragment = new ScanFragment();
+            fragmentTransaction.add(R.id.content, scanFragment);
+        }
+        if (mapFragment == null) {
+            mapFragment = MapFragment.newInstance();
+            fragmentTransaction.add(R.id.content, mapFragment);
+        }
+        if (personFragment == null) {
+            personFragment = PersonFragment.newInstance();
+            fragmentTransaction.add(R.id.content, personFragment);
+        }
         if (mapFragment != null) {
             fragmentTransaction.hide(mapFragment);
         }
@@ -120,7 +151,7 @@ public class MainActivity extends BaseActivity {
 
     @OnClick(R.id.fab)
     public void onClick() {
-        if (AppLogin.isLogin()){
+        if (LoginModle.isLogin()){
             Pair<View, String>[] pairs = TransitionHelper.createSafeTransitionParticipants(this, true);
             ActivityOptionsCompat transitionActivityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(this,pairs);
 //                new Pair<View, String>(fab,"login"));
@@ -131,5 +162,11 @@ public class MainActivity extends BaseActivity {
 //                new Pair<View, String>(fab,"login"));
             startActivity(new Intent(MainActivity.this,LoginActivity.class),transitionActivityOptions.toBundle());
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        super.onBackPressed();
     }
 }

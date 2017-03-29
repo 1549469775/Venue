@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
@@ -14,14 +15,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.jhon.venue.Operation.AppLogin;
+import com.example.jhon.venue.Entity.MessageEvent;
+import com.example.jhon.venue.Interface.JudgeListener;
+import com.example.jhon.venue.Modle.LoginModle;
 import com.example.jhon.venue.R;
 import com.example.jhon.venue.UI.CircleImageView;
 import com.example.jhon.venue.Util.TransitionHelper;
 import com.example.jhon.venue.View.EditorActivity;
 import com.example.jhon.venue.View.LoginActivity;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -59,6 +67,9 @@ public class PersonFragment extends Fragment {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.person_fragment, container, false);
         ButterKnife.bind(this, view);
+        //EventBus-----------注册
+        EventBus.getDefault().register(this);
+
         Glide.with(getContext()).load(R.drawable.tesst).centerCrop().into(imgPerson);
         return view;
     }
@@ -80,7 +91,7 @@ public class PersonFragment extends Fragment {
 
     @OnClick(R.id.img_person)
     public void onClick() {
-        if (AppLogin.isLogin()){
+        if (LoginModle.isLogin()){
             startActivity(new Intent(getContext(), EditorActivity.class));
         }else {
             Pair<View, String>[] pairs = TransitionHelper.createSafeTransitionParticipants(getActivity(), true);
@@ -94,7 +105,7 @@ public class PersonFragment extends Fragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_name:
-                if (AppLogin.isLogin()){
+                if (LoginModle.isLogin()){
                     startActivity(new Intent(getContext(), EditorActivity.class));
                 }else {
                     Pair<View, String>[] pairs = TransitionHelper.createSafeTransitionParticipants(getActivity(), true);
@@ -119,7 +130,7 @@ public class PersonFragment extends Fragment {
                 Snackbar.make(view, "" + view.getId(), Snackbar.LENGTH_SHORT).show();
                 break;
             case R.id.card_person:
-                if (!AppLogin.isLogin()) {
+                if (!LoginModle.isLogin()) {
                     Pair<View, String>[] pairs = TransitionHelper.createSafeTransitionParticipants(getActivity(), true);
                     ActivityOptionsCompat transitionActivityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(), pairs);
                     startActivity(new Intent(getContext(), LoginActivity.class), transitionActivityOptions.toBundle());
@@ -152,5 +163,18 @@ public class PersonFragment extends Fragment {
             Snackbar.make(view, picturePath, Snackbar.LENGTH_SHORT).show();
 //            img_person.setImageBitmap(bitmap);
         }
+    }
+    //EventBus-----------
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void helloEventBus(MessageEvent message){
+        //测试成功
+        tvName.setText(message.nickname);
+//        Snackbar.make(view,message.nickname,Snackbar.LENGTH_SHORT).show();
+    }
+    //EventBus-----------
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 }

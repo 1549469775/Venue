@@ -91,6 +91,9 @@ public class MapFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        location.onDestroy();
+        mMapView.onDestroy();
+
         unbinder.unbind();
     }
 
@@ -100,10 +103,10 @@ public class MapFragment extends Fragment {
      */
     @Override
     public void onDestroy() {
-        Log.i("sys", "mf onDestroy");
+//        Log.i("sys", "mf onDestroy");
         super.onDestroy();
-        location.onDestroy();
-        mMapView.onDestroy();
+//        location.onDestroy();
+//        mMapView.onDestroy();
     }
 
     public static MapFragment newInstance() {

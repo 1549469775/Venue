@@ -6,16 +6,16 @@ package com.example.jhon.venue.Bean;
 
 public class BeanUtil {
 
-    private static User user=null;
+    private static UserMessage userMessage=null;
 
-    public static User getUser() {
-        if (user==null){
-            user=new User();
+    public static UserMessage getUserMessage() {
+        if (userMessage==null){
+            userMessage=new UserMessage();
         }
-        return user;
+        return userMessage;
     }
 
-    public static void setUser(User user) {
-        BeanUtil.user = user;
+    public static void setUserMessage(UserMessage userMessage) {
+        BeanUtil.userMessage = userMessage;
     }
 }

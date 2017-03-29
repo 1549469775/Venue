@@ -62,6 +62,7 @@ public class ScanFragment extends Fragment {
 //                .setBackEnable(true)
                 .setImageArray(mImageArray, mColorArray)
                 .setupWithViewPager(mViewPager);
+
         return view;
     }
 
