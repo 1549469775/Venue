@@ -18,6 +18,7 @@ import com.example.jhon.venue.Fragment.MapFragment;
 import com.example.jhon.venue.Fragment.PersonFragment;
 import com.example.jhon.venue.Fragment.ScanFragment;
 import com.example.jhon.venue.Interface.JudgeListener;
+import com.example.jhon.venue.Modle.GetModle;
 import com.example.jhon.venue.Modle.LoginModle;
 import com.example.jhon.venue.R;
 import com.example.jhon.venue.UI.UIProgressDialog;
@@ -56,6 +57,7 @@ public class MainActivity extends BaseActivity {
             LoginModle.loginByApiToken(this, new JudgeListener() {
                 @Override
                 public void onSuccess() {
+                    GetModle.getInitData(MainActivity.this);
                     Toast.makeText(getApplicationContext(),"已登陆",Toast.LENGTH_SHORT).show();
                 }
 

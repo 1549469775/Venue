@@ -7,6 +7,7 @@ package com.example.jhon.venue.Bean;
 public class BeanUtil {
 
     private static UserMessage userMessage=null;
+    private static TimeLine timeLine=null;
 
     public static UserMessage getUserMessage() {
         if (userMessage==null){
@@ -17,5 +18,16 @@ public class BeanUtil {
 
     public static void setUserMessage(UserMessage userMessage) {
         BeanUtil.userMessage = userMessage;
+    }
+
+    public static TimeLine getTimeLine() {
+        if (userMessage==null){
+            timeLine=new TimeLine();
+        }
+        return timeLine;
+    }
+
+    public static void setTimeLine(TimeLine timeLine) {
+        BeanUtil.timeLine = timeLine;
     }
 }

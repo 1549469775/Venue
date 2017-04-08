@@ -6,16 +6,16 @@ package com.example.jhon.venue.Bean;
 
 public class TimeLine {
 
-    private int id;
+    private long id;
     private String title;
     private String date;
     private String owner;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

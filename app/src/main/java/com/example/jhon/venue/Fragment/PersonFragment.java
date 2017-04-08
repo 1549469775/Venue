@@ -26,6 +26,7 @@ import com.example.jhon.venue.UI.CircleImageView;
 import com.example.jhon.venue.Util.TransitionHelper;
 import com.example.jhon.venue.View.EditorActivity;
 import com.example.jhon.venue.View.LoginActivity;
+import com.example.jhon.venue.View.TimeLineActivity;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -121,7 +122,13 @@ public class PersonFragment extends Fragment {
                 Snackbar.make(view, "" + view.getId(), Snackbar.LENGTH_SHORT).show();
                 break;
             case R.id.person_timeline:
-                Snackbar.make(view, "" + view.getId(), Snackbar.LENGTH_SHORT).show();
+                if (LoginModle.isLogin()){
+                    startActivity(new Intent(getContext(), TimeLineActivity.class));
+                }else {
+                    Pair<View, String>[] pairs = TransitionHelper.createSafeTransitionParticipants(getActivity(), true);
+                    ActivityOptionsCompat transitionActivityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(), pairs);
+                    startActivity(new Intent(getContext(), LoginActivity.class), transitionActivityOptions.toBundle());
+                }
                 break;
             case R.id.person_setting:
                 Snackbar.make(view, "" + view.getId(), Snackbar.LENGTH_SHORT).show();

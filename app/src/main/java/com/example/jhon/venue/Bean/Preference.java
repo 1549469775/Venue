@@ -12,6 +12,7 @@ public class Preference {
     private static SharedPreferences sharedPreferences;
 
     private static String apiToken;
+    private static String fileApiToken;
     private static String type;
     private static Long expiration;
     private static boolean isAutoLogin;
@@ -95,5 +96,24 @@ public class Preference {
         }
         userId=sharedPreferences.getInt("userId",userId);
         return userId;
+    }
+
+    public static void saveFileApiToen(Context context,String fileApiToken){
+        if (sharedPreferences==null){
+            sharedPreferences=context.getSharedPreferences("data",Context.MODE_PRIVATE);
+//            sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        }
+        SharedPreferences.Editor edit=sharedPreferences.edit();
+        edit.putString("fileApiToken",fileApiToken);
+        edit.commit();
+    }
+
+    public static String getFileApiToen(Context context){
+        if (sharedPreferences==null){
+            sharedPreferences=context.getSharedPreferences("data",Context.MODE_PRIVATE);
+//            sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        }
+        fileApiToken=sharedPreferences.getString("fileApiToken","");
+        return fileApiToken;
     }
 }

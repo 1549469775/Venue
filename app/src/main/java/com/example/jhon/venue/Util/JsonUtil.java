@@ -86,5 +86,16 @@ public class JsonUtil {
         }
         return response;
     }
+    public static String getString(String para,String json){
+        JSONObject jsonObject= null;
+        String message="";
+        try {
+            jsonObject = new JSONObject(json);
+            message=jsonObject.getString(para);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return message;
+    }
 
 }

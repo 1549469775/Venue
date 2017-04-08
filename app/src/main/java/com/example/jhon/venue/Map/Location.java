@@ -15,6 +15,7 @@ import com.amap.api.maps.UiSettings;
 import com.amap.api.maps.model.BitmapDescriptorFactory;
 import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.MarkerOptions;
+import com.example.jhon.venue.Bean.LocationData;
 import com.example.jhon.venue.R;
 
 /**
@@ -105,25 +106,25 @@ public class Location implements LocationSource,AMapLocationListener {
             mLocationOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
             //设置定位模式为AMapLocationMode.Device_Sensors，仅设备模式。
 //             mLocationOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Device_Sensors);
-            //单次定位
-            //获取一次定位结果：
-            // 该方法默认为false。
-            mLocationOption.setOnceLocation(true);
-            //获取最近3s内精度最高的一次定位结果：
-            // 设置setOnceLocationLatest(boolean b)接口为true，启动定位时SDK会返回最近3s内精度最高的一次定位结果。如果设置其为true，setOnceLocation(boolean b)接口也会被设置为true，反之不会，默认为false。
-            mLocationOption.setOnceLocationLatest(true);
+//            //单次定位
+//            //获取一次定位结果：
+//            // 该方法默认为false。
+//            mLocationOption.setOnceLocation(true);
+//            //获取最近3s内精度最高的一次定位结果：
+//            // 设置setOnceLocationLatest(boolean b)接口为true，启动定位时SDK会返回最近3s内精度最高的一次定位结果。如果设置其为true，setOnceLocation(boolean b)接口也会被设置为true，反之不会，默认为false。
+//            mLocationOption.setOnceLocationLatest(true);
 
-//            //自定义连续定位
-//            //设置定位间隔,单位毫秒,默认为2000ms，最低1000ms。
-//            mLocationOption.setInterval(1000);
-//            //设置是否返回地址信息（默认返回地址信息）
-//            mLocationOption.setNeedAddress(true);
-//            //设置是否强制刷新WIFI，默认为true，强制刷新。
-//            mLocationOption.setWifiActiveScan(false);
-//            //设置是否允许模拟位置,默认为false，不允许模拟位置
-//            mLocationOption.setMockEnable(false);
-//            //单位是毫秒，默认30000毫秒，建议超时时间不要低于8000毫秒。
-//            mLocationOption.setHttpTimeOut(20000);
+            //自定义连续定位
+            //设置定位间隔,单位毫秒,默认为2000ms，最低1000ms。
+            mLocationOption.setInterval(1000);
+            //设置是否返回地址信息（默认返回地址信息）
+            mLocationOption.setNeedAddress(true);
+            //设置是否强制刷新WIFI，默认为true，强制刷新。
+            mLocationOption.setWifiActiveScan(false);
+            //设置是否允许模拟位置,默认为false，不允许模拟位置
+            mLocationOption.setMockEnable(false);
+            //单位是毫秒，默认30000毫秒，建议超时时间不要低于8000毫秒。
+            mLocationOption.setHttpTimeOut(20000);
             //关闭缓存机制
             mLocationOption.setLocationCacheEnable(false);
 
@@ -182,6 +183,8 @@ public class Location implements LocationSource,AMapLocationListener {
                 amapLocation.getAoiName();//获取当前定位点的AOI信息
                 amapLocation.getBuildingId();//获取当前室内定位的建筑物Id
                 amapLocation.getFloor();//获取当前室内定位的楼层
+                LocationData.latitude=amapLocation.getLatitude();
+                LocationData.longitude=amapLocation.getLongitude();
 //获取定位时间
 //            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//api 24
 //            Date date = new Date(amapLocation.getTime());
