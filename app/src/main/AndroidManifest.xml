@@ -47,6 +47,8 @@
             android:name=".View.TimeLineActivity"
             android:label="@string/title_activity_time_line"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".View.CommentActivity"/>
+        <activity android:name=".View.AboutActivity"/>
     </application>
 
 </manifest>

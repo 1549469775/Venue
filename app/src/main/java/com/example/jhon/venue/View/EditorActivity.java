@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.jhon.venue.BaseActivity;
+import com.example.jhon.venue.Bean.BeanUtil;
+import com.example.jhon.venue.Bean.Preference;
 import com.example.jhon.venue.Entity.MessageEvent;
 import com.example.jhon.venue.Interface.JudgeListener;
 import com.example.jhon.venue.Modle.LoginModle;
@@ -52,10 +54,9 @@ public class EditorActivity extends BaseActivity {
         setContentView(R.layout.editor_activity);
         ButterKnife.bind(this);
         setupToolbar(true, true);
-        getToolbar().setTitle("编辑资料");
-        getToolbar().setTitleTextColor(Color.WHITE);
+        getSupportActionBar().setTitle("编辑资料");
 
-        action.initData(userNickname, userNumber, userQq, userBirthday, userBlog);
+        action.initData(Preference.getUserId(this),userNickname, userNumber, userQq, userBirthday, userBlog);
 
         //TODO 修改个人信息
     }
@@ -87,6 +88,7 @@ public class EditorActivity extends BaseActivity {
                         new JudgeListener() {
                             @Override
                             public void onSuccess() {
+                                EventBus.getDefault().post(new MessageEvent(userNickname.getText().toString(), ""));
                                 Toast.makeText(getApplicationContext(),"Success",Toast.LENGTH_SHORT).show();
                             }
 
@@ -107,16 +109,28 @@ public class EditorActivity extends BaseActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    private boolean isEnable=false;
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.navigation_grid:
-                userNickname.setEnabled(true);
-                userNumber.setEnabled(true);
-                userQq.setEnabled(true);
-                userBirthday.setEnabled(true);
-                userBlog.setEnabled(true);
-                Toast.makeText(getApplicationContext(), "启用编辑", Toast.LENGTH_SHORT).show();
+                if (!isEnable){
+                    userNickname.setEnabled(true);
+                    userNumber.setEnabled(true);
+                    userQq.setEnabled(true);
+                    userBirthday.setEnabled(true);
+                    userBlog.setEnabled(true);
+                    Toast.makeText(getApplicationContext(), "启用编辑", Toast.LENGTH_SHORT).show();
+                    isEnable=!isEnable;
+                }else {
+                    userNickname.setEnabled(false);
+                    userNumber.setEnabled(false);
+                    userQq.setEnabled(false);
+                    userBirthday.setEnabled(false);
+                    userBlog.setEnabled(false);
+                    Toast.makeText(getApplicationContext(), "关闭编辑", Toast.LENGTH_SHORT).show();
+                    isEnable=!isEnable;
+                }
                 break;
         }
         return super.onOptionsItemSelected(item);

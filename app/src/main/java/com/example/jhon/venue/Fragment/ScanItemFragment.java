@@ -23,13 +23,23 @@ import android.widget.ImageView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.animation.BaseAnimation;
 import com.example.jhon.venue.Adapter.QuickAdapter;
+import com.example.jhon.venue.Bean.BeanUtil;
+import com.example.jhon.venue.Bean.Story;
 import com.example.jhon.venue.Bean.Test;
 import com.example.jhon.venue.Entity.HotDataServer;
+import com.example.jhon.venue.Interface.ParseListener;
+import com.example.jhon.venue.Modle.GetModle;
 import com.example.jhon.venue.R;
+import com.example.jhon.venue.UI.ShowUtil;
+import com.example.jhon.venue.Util.JsonUtil;
 import com.example.jhon.venue.Util.TransitionHelper;
+import com.example.jhon.venue.View.CommentActivity;
 import com.example.jhon.venue.View.Detail_Activity;
 import com.example.jhon.venue.View.LoginActivity;
+import com.example.jhon.venue.View.MainActivity;
 import com.flaviofaria.kenburnsview.KenBurnsView;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,9 +59,11 @@ public class ScanItemFragment extends Fragment {
     SwipeRefreshLayout srlScan;
     private QuickAdapter quickAdapter;
 
-    private List<Test> list;
+    private List<Story> list;
 
     private AlphaAnimation alphaAnimation;
+    private int page=1;
+    private String lastData="";;
 
     public static ScanItemFragment getInstance() {
         ScanItemFragment fra = new ScanItemFragment();
@@ -67,8 +79,9 @@ public class ScanItemFragment extends Fragment {
             alphaAnimation=new AlphaAnimation(0,1);
             alphaAnimation.setDuration(1000);
         }
-        initSWL();
+        initData();
         initRecycleView();
+        initSWL();
         return v;
     }
 
@@ -77,23 +90,60 @@ public class ScanItemFragment extends Fragment {
             @Override
             public void onRefresh() {
                 //TODO 模拟刷新数据
-                new Handler().postDelayed(new Runnable() {
+                GetModle.getRefreshData(getContext(), new ParseListener() {
                     @Override
-                    public void run() {
-                        list.addAll(0, HotDataServer.getHotData(2));
-                        quickAdapter.notifyDataSetChanged();
+                    public void error(Exception e) {
                         srlScan.setRefreshing(false);
+                        ShowUtil.showSnack(recyclerview,e.getMessage());
                     }
-                },2000);
+
+                    @Override
+                    public void parseJson(String response) {
+                        BeanUtil.setList(JsonUtil.stringToList(JsonUtil.getString("list",JsonUtil.getEntity(response.toString())),Story.class));
+                        srlScan.setRefreshing(false);
+                        list.clear();
+                        list.addAll(BeanUtil.getList());
+                        quickAdapter.notifyDataSetChanged();
+                    }
+                });
+//                new Handler().postDelayed(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        list.addAll(0, HotDataServer.getHotData(2));
+//                        quickAdapter.notifyDataSetChanged();
+//                        srlScan.setRefreshing(false);
+//                    }
+//                },2000);
+            }
+        });
+    }
+
+    public void initData(){
+        if (list==null){
+            list=new ArrayList<>();
+        }
+        srlScan.setRefreshing(true);
+        GetModle.getRecentData(getContext(), new ParseListener() {
+            @Override
+            public void error(Exception e) {
+                srlScan.setRefreshing(false);
+                ShowUtil.showSnack(recyclerview,e.getMessage());
+            }
+
+            @Override
+            public void parseJson(String response) {
+                BeanUtil.setList(JsonUtil.stringToList(JsonUtil.getString("list",JsonUtil.getEntity(response.toString())),Story.class));
+                srlScan.setRefreshing(false);
+                list.addAll(BeanUtil.getList());
             }
         });
     }
 
     private void initRecycleView() {
         recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
-        quickAdapter = new QuickAdapter(getContext(),HotDataServer.getHotData(20));
+        quickAdapter = new QuickAdapter(getContext(),list);
         recyclerview.setAdapter(quickAdapter);
-
+        quickAdapter.bindToRecyclerView(recyclerview);
         quickAdapter.isFirstOnly(false);
         quickAdapter.openLoadAnimation(new BaseAnimation() {
             @Override
@@ -104,7 +154,7 @@ public class ScanItemFragment extends Fragment {
                 };
             }
         });
-
+        quickAdapter.setEmptyView(R.layout.empty_view);
         quickAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
             @Override
             public boolean onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
@@ -139,13 +189,17 @@ public class ScanItemFragment extends Fragment {
                         }
                         break;
                     case R.id.img_talk:
-
+                        Intent intent=new Intent(getContext(), CommentActivity.class);
+                        intent.putExtra("storyId",list.get(position).getId());
+                        startActivity(intent);
                         break;
                     case R.id.tv_detail_title:
                         Snackbar.make(view,"科技",Snackbar.LENGTH_SHORT).show();
                         break;
                     case R.id.card:
 //                        ((KenBurnsView)adapter.getViewByPosition(position,R.id.imageKenBurns)).pause();
+                        EventBus.getDefault().postSticky(list.get(position));
+//                        ShowUtil.showToast(getContext(),list.get(position).getTitle());
                         Pair<View, String>[] pairs = TransitionHelper.createSafeTransitionParticipants(getActivity(), true,
                             new Pair(view.findViewById(R.id.imageKenBurns),"img_detail_bg"));
                         ActivityOptionsCompat transitionActivityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(), pairs);
@@ -157,6 +211,7 @@ public class ScanItemFragment extends Fragment {
             }
         });
 
+
         quickAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {
@@ -164,15 +219,37 @@ public class ScanItemFragment extends Fragment {
                 recyclerview.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        List<Test> tests = new ArrayList<>();
-                        for (int i = 0; i < 5; i++) {
-                            Test status = new Test();
-                            status.setName("Chad" + i);
-                            tests.add(status);
-                        }
-                        list.addAll(tests);
-                        quickAdapter.notifyDataSetChanged();
-                        quickAdapter.loadMoreComplete();
+                        GetModle.getMoreData(getContext(), new ParseListener() {
+                            @Override
+                            public void error(Exception e) {
+                                quickAdapter.loadMoreFail();
+                                ShowUtil.showSnack(recyclerview,e.getMessage());
+                            }
+
+                            @Override
+                            public void parseJson(String response) {
+                                if (!TextUtils.isEmpty(JsonUtil.getEntity(response))&&!TextUtils.equals(lastData,JsonUtil.getEntity(response))){
+                                    ShowUtil.showSnack(recyclerview,"loadMoreComplete");
+                                    list.addAll(JsonUtil.stringToList(JsonUtil.getString("list",JsonUtil.getEntity(response.toString())),Story.class));
+                                    quickAdapter.notifyDataSetChanged();
+                                    quickAdapter.loadMoreComplete();
+                                }else {
+                                    ShowUtil.showSnack(recyclerview,"loadMoreEnd");
+                                    quickAdapter.loadMoreEnd();
+                                }
+                                lastData=JsonUtil.getEntity(response);
+                            }
+                        },++page);
+
+//                        List<Test> tests = new ArrayList<>();
+//                        for (int i = 0; i < 5; i++) {
+//                            Test status = new Test();
+//                            status.setName("Chad" + i);
+//                            tests.add(status);
+//                        }
+//                        list.addAll(tests);
+//                        quickAdapter.notifyDataSetChanged();
+//                        quickAdapter.loadMoreComplete();
                     }
                 }, 1000);
             }

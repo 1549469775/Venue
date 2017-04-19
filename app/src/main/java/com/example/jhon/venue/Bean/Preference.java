@@ -18,7 +18,7 @@ public class Preference {
     private static boolean isAutoLogin;
     private static String username;
     private static int userId;
-
+    private static long timelineId;
 
     public static void save(Context context,String apiToken, String type, Long expiration,String username,int userId){
         Preference.apiToken=apiToken;
@@ -115,5 +115,24 @@ public class Preference {
         }
         fileApiToken=sharedPreferences.getString("fileApiToken","");
         return fileApiToken;
+    }
+
+    public static void saveTimeLineId(Context context,long timeLineId){
+        if (sharedPreferences==null){
+            sharedPreferences=context.getSharedPreferences("data",Context.MODE_PRIVATE);
+//            sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        }
+        SharedPreferences.Editor edit=sharedPreferences.edit();
+        edit.putLong("timeLineId",timeLineId);
+        edit.commit();
+    }
+
+    public static long getTimeLineId(Context context){
+        if (sharedPreferences==null){
+            sharedPreferences=context.getSharedPreferences("data",Context.MODE_PRIVATE);
+//            sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        }
+        timelineId=sharedPreferences.getLong("timeLineId",-1);
+        return timelineId;
     }
 }

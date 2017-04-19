@@ -23,12 +23,15 @@ public class EditorAction {
         editorModle=new EditorModle(context);
     }
 
-    public void initData(EditText userNickname,
+    public void initData(int userId,
+                         EditText userNickname,
                          EditText userNumber,
                          EditText userQq,
                          EditText userBirthday,
                          EditText userBlog){
-        editorModle.initData(userNickname,
+        editorModle.initData(
+                userId,
+                userNickname,
                 userNumber,
                 userQq,
                 userBirthday,

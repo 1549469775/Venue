@@ -1,6 +1,7 @@
 package com.example.jhon.venue.Modle;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.EditText;
 
@@ -10,6 +11,7 @@ import com.example.jhon.venue.Bean.UserMessage;
 import com.example.jhon.venue.Bean.VenueAPI;
 import com.example.jhon.venue.Interface.JudgeListener;
 import com.example.jhon.venue.Interface.ParseListener;
+import com.example.jhon.venue.UI.ShowUtil;
 import com.example.jhon.venue.Util.JsonUtil;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.Callback;
@@ -34,19 +36,31 @@ public class EditorModle {
         this.context = context;
     }
 
-    public void initData(EditText userNickname,
-                                EditText userNumber,
-                                EditText userQq,
-                                EditText userBirthday,
-                                EditText userBlog){
-        UserMessage userMessage;
-        userMessage= BeanUtil.getUserMessage();
-        userNickname.setText(userMessage.getNickname());
-        userNumber.setText(userMessage.getEmail());
-        userQq.setText(userMessage.getQq());
-        userBirthday.setText(userMessage.getBirthday());
-        userBlog.setText(userMessage.getBlog());
+    public void initData(int userId,
+                         final EditText userNickname,
+                         final EditText userNumber,
+                         final EditText userQq,
+                         final EditText userBirthday,
+                         final EditText userBlog){
 
+
+        LoginModle.getUserMessageById(context, new JudgeListener() {
+            @Override
+            public void onSuccess() {
+                UserMessage userMessage;
+                userMessage= BeanUtil.getUserMessage();
+                userNickname.setText(userMessage.getNickname());
+                userNumber.setText(userMessage.getEmail());
+                userQq.setText(userMessage.getQq());
+                userBirthday.setText(userMessage.getBirthday());
+                userBlog.setText(userMessage.getBlog());
+            }
+
+            @Override
+            public void onError(Exception e) {
+                ShowUtil.showToast(context,e.getMessage());
+            }
+        },userId);
     }
 
     public void updateUserMessage(UserMessage userMessage, final JudgeListener listener){
@@ -55,7 +69,8 @@ public class EditorModle {
                 .patch()
                 .url(VenueAPI.UserUpdateUrl)
                 .addHeader("Authorization", Preference.getApiToken(context))
-                .requestBody(RequestBody.create(MediaType.parse("application/json; charset=utf-8"),JsonUtil.objectToString(userMessage)))
+                .requestBody(RequestBody.create(MediaType.parse("application/json; charset=utf-8"),""))
+                .requestBody(RequestBody.create(MediaType.parse(""),JsonUtil.objectToString(userMessage)))
                 .build()
                 .execute(new Callback() {
                     @Override
@@ -76,7 +91,12 @@ public class EditorModle {
                     public void onResponse(Object response, int id) {
 //                        listener.onSuccess((String) response);
                         Log.d("xyx", "onResponse: "+response.toString());
-                        listener.onSuccess();
+                        if (TextUtils.isEmpty(JsonUtil.judgeError(response.toString()))){
+                            listener.onSuccess();
+                        }else {
+                            Exception exception=new Exception(JsonUtil.judgeError(response.toString()));
+                            listener.onError(exception);
+                        }
                     }
                 });
     }

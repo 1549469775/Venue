@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/textaaaaaa"
+        android:alpha="0"
+        android:background="@color/accent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true">
+        <TextView
+            android:text="xieyaxin"
+            android:textSize="20dp"
+            android:textColor="#fff"
+            android:layout_alignParentLeft="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/textbbbbb"
+        android:alpha="0"
+        android:background="@color/red_primary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+        <TextView
+            android:text="xuke"
+            android:textSize="20dp"
+            android:textColor="#fff"
+            android:layout_alignParentBottom="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        </RelativeLayout>
+    <com.example.jhon.venue.UI.CircleImageView
+        android:id="@+id/img_about_person"
+        app:border_color="@color/green_primary"
+        app:border_width="3dp"
+        android:src="@drawable/img_head"
+        android:clickable="true"
+        android:layout_gravity="center_horizontal"
+        android:scaleType="centerCrop"
+        android:layout_margin="5dp"
+        android:layout_width="80sp"
+        android:layout_height="80sp" />
+    <ImageView
+        android:id="@+id/img_down"
+        android:src="@drawable/ic"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <com.example.jhon.venue.UI.CircleImageView
+        android:id="@+id/img_about_person_right"
+        app:border_color="@color/green_primary"
+        app:border_width="3dp"
+        android:src="@drawable/img_head"
+        android:clickable="true"
+        android:layout_alignParentRight="true"
+        android:scaleType="centerCrop"
+        android:layout_margin="5dp"
+        android:layout_width="80sp"
+        android:layout_height="80sp" />
+</RelativeLayout>

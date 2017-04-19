@@ -34,7 +34,7 @@ public class LoginAction {
             public void onSuccess() {
                 UIProgressDialog.closeProgress();//放在里面会报错
                 //更新UI
-                loginModle.getUserMessage(context, new JudgeListener() {
+                loginModle.getUserMessageByName(context, new JudgeListener() {
                     @Override
                     public void onSuccess() {
                         //发数据给person更新UI

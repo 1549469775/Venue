@@ -20,6 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.jhon.venue.BaseActivity;
 import com.example.jhon.venue.Bean.BeanUtil;
 import com.example.jhon.venue.Bean.LocationData;
@@ -32,6 +33,7 @@ import com.example.jhon.venue.Preference.SubmitAction;
 import com.example.jhon.venue.R;
 import com.example.jhon.venue.UI.ShowUtil;
 import com.example.jhon.venue.Util.JsonUtil;
+import com.example.jhon.venue.Util.ScreenUtil;
 
 import java.io.File;
 
@@ -140,13 +142,15 @@ public class SubmitActivity extends BaseActivity implements SubmitAction.SubmitL
             cursor.close();
             imgPath=picturePath;
             Bitmap bitmap= BitmapFactory.decodeFile(picturePath);
-            imgSubmitBooktop.setImageBitmap(bitmap);
-            imgSubmitBooktop.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,bitmap.getHeight()));
+            Glide.with(this).load(picturePath).override(ScreenUtil.getScreenWidth(this),bitmap.getHeight())
+                    .centerCrop().into(imgSubmitBooktop);
+//            imgSubmitBooktop.setImageBitmap(bitmap);
+//            imgSubmitBooktop.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,bitmap.getHeight()));
         }
     }
 
     public void showDialog(){
-        if (BeanUtil.getTimeLine()!=null){
+        if (BeanUtil.getTimeLine().getId()!=0){
             final String[] title={"故事","人物","地点"};
             AlertDialog.Builder builder=new AlertDialog.Builder(this);
             builder.setTitle("请选择投递的类型");
@@ -179,6 +183,7 @@ public class SubmitActivity extends BaseActivity implements SubmitAction.SubmitL
                                 story.setTimelineId(BeanUtil.getTimeLine().getId());
 //                            ShowUtil.showLog("getFileName",HttpFile.getFileName(imgPath));
                                 story.setContent(etSubmitAssent.getText().toString());
+                                Log.d("etSubmitAssent",etSubmitAssent.getText().toString());
 //                    story.setTimelineId();
                                 story.setLatitude(LocationData.latitude);
                                 story.setLongitude(LocationData.longitude);

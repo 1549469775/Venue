@@ -20,13 +20,14 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <com.flaviofaria.kenburnsview.KenBurnsView
+            <ImageView
                 android:id="@+id/imageKenBurns"
-                android:src="@drawable/tesst"
+                android:scaleType="centerCrop"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="200dp" />
+                android:maxHeight="200dp"
+                android:layout_height="wrap_content" />
             <!--<ImageView-->
             <!--android:id="@+id/img_detail_bg"-->
             <!--android:src="@drawable/tesst"-->
@@ -51,7 +52,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:maxLines="5"
+                android:maxLines="3"
                 android:layout_marginLeft="@dimen/card_subtitle_margin"
                 android:layout_marginRight="@dimen/card_subtitle_margin"
                 android:text="Subtitle here" />

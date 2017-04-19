@@ -67,13 +67,14 @@ public class HttpFile {
         }
 
         ShowUtil.showLog("upload",file.exists()+"dssd");
+        ShowUtil.showLog("upload",getContentType(filePath));
 //        ShowUtil.showLog("upload",String.valueOf(FileTransformUtil.getBytes(filePath)));
         OkHttpUtils.put()
                 .url(VenueAPI.UploadFileUrl)
                 .addHeader("Authorization", Preference.getFileApiToen(context))
                 .addHeader("Content-Encoding","UTF-8")
                 .addHeader("X-Filename",file.getName())
-                .addHeader("Content-Type","image/jpeg")
+                .addHeader("Content-Type",getContentType(filePath))
                 .addHeader("Content-Length", String.valueOf(FileTransformUtil.getBytes(filePath).length))
                 .requestBody(RequestBody.create(null,FileTransformUtil.getBytes(filePath)))
                 .build()
@@ -100,9 +101,20 @@ public class HttpFile {
                 });
     }
 
-    public static String getFileName(String path){
-        File file=new File(path);
-        return file.getName();
+    private static String getContentType(String filename) {
+        if (filename.endsWith(".jpeg")) {
+            return "image/jpeg";
+        }else if (filename.endsWith(".jpeg")) {
+            return "image/jpeg";
+        }else if (filename.endsWith(".png")){
+            return "image/png";
+        }else if (filename.endsWith(".tiff")){
+            return "image/tiff";
+        }else if (filename.endsWith(".gif")){
+            return "image/gif";
+        }else {
+            return "image/jpeg";
+        }
     }
 
 }

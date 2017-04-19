@@ -15,7 +15,9 @@ import com.amap.api.maps.MapView;
 import com.amap.api.maps.UiSettings;
 import com.example.jhon.venue.BaseActivity;
 import com.example.jhon.venue.Bean.BeanUtil;
+import com.example.jhon.venue.Bean.Preference;
 import com.example.jhon.venue.Bean.TimeLine;
+import com.example.jhon.venue.Entity.MessageEvent;
 import com.example.jhon.venue.Interface.JudgeListener;
 import com.example.jhon.venue.Interface.ParseListener;
 import com.example.jhon.venue.Map.Location;
@@ -23,6 +25,10 @@ import com.example.jhon.venue.Modle.TimeLineModle;
 import com.example.jhon.venue.R;
 import com.example.jhon.venue.UI.ShowUtil;
 import com.example.jhon.venue.Util.JsonUtil;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.Date;
 import java.util.List;
@@ -55,8 +61,10 @@ public class TimeLineActivity extends BaseActivity {
     public void initView() {
         setContentView(R.layout.activity_time_line);
         setupToolbar(true, true);
-        getToolbar().setTitle("远行");
+        getSupportActionBar().setTitle("远行");
         ButterKnife.bind(this);
+        //EventBus-----------注册
+        EventBus.getDefault().register(this);
 
         mapTimeline.onCreate(savedInstanceState);// 此方法须覆写，虚拟机需要在很多情况下保存地图绘制的当前状态。
         if (aMap == null) {
@@ -130,6 +138,7 @@ public class TimeLineActivity extends BaseActivity {
 //                        lines=TimeLineModle.getListTimeLine(TimeLineActivity.this);
                             if (lines != null) {
                                 BeanUtil.setTimeLine(lines.get(TimeLineActivity.this.which));
+                                EventBus.getDefault().postSticky(BeanUtil.getTimeLine());
                                 tvTimelineTitle.setText(lines.get(TimeLineActivity.this.which).getTitle());
 //                                Date date=new Date(lines.get(TimeLineActivity.this.which).getDate());
 //                                tvTimelineTime.setText(date.getYear()+"-"+date.getMonth());
@@ -166,6 +175,7 @@ public class TimeLineActivity extends BaseActivity {
                             @Override
                             public void onSuccess() {
                                 ShowUtil.showToast(TimeLineActivity.this,"创建时间轴成功");
+                                Preference.saveTimeLineId(TimeLineActivity.this,BeanUtil.getTimeLine().getId());
                             }
 
                             @Override
@@ -178,6 +188,13 @@ public class TimeLineActivity extends BaseActivity {
                 .create();
         alertDialog.show();
     }
+
+    //EventBus-----------
+    @Subscribe(sticky = true,threadMode = ThreadMode.MAIN)
+    public void eventBus(TimeLine  timeLine){
+        tvTimelineTitle.setText(timeLine.getTitle());
+    }
+    //EventBus-----------
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -207,6 +224,7 @@ public class TimeLineActivity extends BaseActivity {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        EventBus.getDefault().unregister(this);
         mapTimeline.onDestroy();
     }
 }

@@ -8,6 +8,7 @@ import com.example.jhon.venue.Interface.JudgeListener;
 import com.example.jhon.venue.Interface.ParseListener;
 import com.example.jhon.venue.Modle.SubmitModle;
 import com.example.jhon.venue.UI.ShowUtil;
+import com.example.jhon.venue.UI.UIProgressDialog;
 import com.example.jhon.venue.Util.JsonUtil;
 
 /**
@@ -34,11 +35,13 @@ public class SubmitAction {
         submitModle.submitItem(context, submitListener.getStory(), new JudgeListener() {
                     @Override
                     public void onSuccess() {
+                        UIProgressDialog.closeProgress();
                         listener.onSuccess();
                     }
 
                     @Override
                     public void onError(Exception e) {
+                        UIProgressDialog.closeProgress();
                         listener.onError(e);
                     }
                 });
@@ -46,6 +49,7 @@ public class SubmitAction {
     }
 
     public void upLoad(String path, final ParseListener listener){
+        UIProgressDialog.showProgress(context,"上传中");
         HttpFile.uploadFile(path, context, new ParseListener() {
             @Override
             public void error(Exception e) {

@@ -84,6 +84,7 @@ public class LoginActivity extends BaseActivity implements CompoundButton.OnChec
                                 new JudgeListener() {
                                     @Override
                                     public void onSuccess() {
+                                        finish();
                                         Snackbar.make(view, "Success", Snackbar.LENGTH_SHORT).show();
                                     }
 

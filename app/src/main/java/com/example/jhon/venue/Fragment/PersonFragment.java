@@ -24,6 +24,7 @@ import com.example.jhon.venue.Modle.LoginModle;
 import com.example.jhon.venue.R;
 import com.example.jhon.venue.UI.CircleImageView;
 import com.example.jhon.venue.Util.TransitionHelper;
+import com.example.jhon.venue.View.AboutActivity;
 import com.example.jhon.venue.View.EditorActivity;
 import com.example.jhon.venue.View.LoginActivity;
 import com.example.jhon.venue.View.TimeLineActivity;
@@ -123,6 +124,7 @@ public class PersonFragment extends Fragment {
                 break;
             case R.id.person_timeline:
                 if (LoginModle.isLogin()){
+
                     startActivity(new Intent(getContext(), TimeLineActivity.class));
                 }else {
                     Pair<View, String>[] pairs = TransitionHelper.createSafeTransitionParticipants(getActivity(), true);
@@ -134,7 +136,9 @@ public class PersonFragment extends Fragment {
                 Snackbar.make(view, "" + view.getId(), Snackbar.LENGTH_SHORT).show();
                 break;
             case R.id.person_about:
-                Snackbar.make(view, "" + view.getId(), Snackbar.LENGTH_SHORT).show();
+                Pair<View, String>[] pai = TransitionHelper.createSafeTransitionParticipants(getActivity(), true);
+                ActivityOptionsCompat transitionActivity = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(), pai);
+                startActivity(new Intent(getContext(), AboutActivity.class), transitionActivity.toBundle());
                 break;
             case R.id.card_person:
                 if (!LoginModle.isLogin()) {

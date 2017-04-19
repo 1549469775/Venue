@@ -15,5 +15,5 @@ public class VenueAPI {
 
     public static String PermissionFileUrl="http://119.23.142.44/api/file/permission";
     public static String UploadFileUrl="http://119.23.142.44/api/file/upload";
-    public static String DownloadFileUrl="http://119.23.142.44/api/file/download/:";
+    public static String DownloadFileUrl="http://119.23.142.44/api/file/download/";
 }

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    card_view:cardCornerRadius="0dp"
+    card_view:cardElevation="0.5dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginBottom="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_gravity="end"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:text="当前文章热度一般"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:layout_weight="1"
+                android:tag="not_prised"
+                android:id="@+id/img_prise"
+                android:button="@null"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/button_favo_up"
+                android:textColor="@color/yellow_primary"
+                android:layout_margin="@dimen/card_button_margin" />
+
+            <ImageView
+                android:layout_weight="1"
+                android:id="@+id/img_collect"
+                android:tag="not_collected"
+                android:button="@null"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/button_bookmark_up"
+                android:textColor="@color/yellow_primary"
+                android:layout_margin="@dimen/card_button_margin" />
+
+            <ImageView
+                android:layout_weight="1"
+                android:id="@+id/img_talk"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/button_comment"
+                android:textColor="@color/yellow_primary"
+                android:layout_margin="@dimen/card_button_margin"/>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_comment_num"
+            android:layout_gravity="center"
+            android:text="当前评论数量为"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</android.support.v7.widget.CardView>

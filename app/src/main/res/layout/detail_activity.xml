@@ -24,7 +24,6 @@
             <com.flaviofaria.kenburnsview.KenBurnsView
                 android:id="@+id/img_detail_bg"
                 android:transitionName="img_detail_bg"
-                android:src="@drawable/tesst"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
                 app:layout_collapseMode="parallax"

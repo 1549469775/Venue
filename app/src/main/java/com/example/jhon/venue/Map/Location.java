@@ -81,7 +81,6 @@ public class Location implements LocationSource,AMapLocationListener {
         aMap.setMyLocationEnabled(true);
         // 设置定位的类型为定位模式，有定位、跟随或地图根据面向方向旋转几种
         aMap.setMyLocationType(AMap.LOCATION_TYPE_MAP_FOLLOW);
-
         //定位的小图标 默认是蓝点 这里自定义一团火，其实就是一张图片
 //        MyLocationStyle myLocationStyle = new MyLocationStyle();
 //        myLocationStyle.myLocationIcon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher));
@@ -116,7 +115,7 @@ public class Location implements LocationSource,AMapLocationListener {
 
             //自定义连续定位
             //设置定位间隔,单位毫秒,默认为2000ms，最低1000ms。
-            mLocationOption.setInterval(1000);
+            mLocationOption.setInterval(2000);
             //设置是否返回地址信息（默认返回地址信息）
             mLocationOption.setNeedAddress(true);
             //设置是否强制刷新WIFI，默认为true，强制刷新。
@@ -204,7 +203,6 @@ public class Location implements LocationSource,AMapLocationListener {
 
 //                    new MapDownload().downloadMap(context);//下载地图
                 }
-
             } else {
                 String errText = "定位失败," + amapLocation.getErrorCode()+ ": " + amapLocation.getErrorInfo();
                 Log.e("AmapErr",errText);
@@ -239,8 +237,10 @@ public class Location implements LocationSource,AMapLocationListener {
     }
 
     public void startLocation(){
-        mLocationClient.startLocation();//启动定位
-        isFirst=true;
+        //设置缩放级别
+        aMap.moveCamera(CameraUpdateFactory.zoomTo(15));
+        //将地图移动到定位点
+        aMap.moveCamera(CameraUpdateFactory.changeLatLng(latLng));
     }
 
     public void stopLocation(){

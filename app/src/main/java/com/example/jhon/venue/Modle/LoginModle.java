@@ -13,13 +13,16 @@ import com.example.jhon.venue.Entity.MessageEvent;
 import com.example.jhon.venue.Http.HttpPost;
 import com.example.jhon.venue.Interface.JudgeListener;
 import com.example.jhon.venue.Interface.ParseListener;
+import com.example.jhon.venue.UI.ShowUtil;
 import com.example.jhon.venue.Util.JsonUtil;
 import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.Callback;
 import com.zhy.http.okhttp.callback.StringCallback;
 
 import org.greenrobot.eventbus.EventBus;
 
 import okhttp3.Call;
+import okhttp3.Response;
 
 /**
  * Created by John on 2017/3/28.
@@ -140,7 +143,7 @@ public class LoginModle {
                 });
     }
 
-    public void getUserMessage(Context context,final JudgeListener listener){
+    public void getUserMessageByName(Context context,final JudgeListener listener){
         OkHttpUtils.get()
                 .url(VenueAPI.UserUrl)
                 .addHeader("Authorization", Preference.getApiToken(context))
@@ -167,6 +170,65 @@ public class LoginModle {
                             listener.onSuccess();;
                         }
                         listener.onSuccess();
+                    }
+                });
+    }
+
+    public static void getUserMessageById(Context context,final JudgeListener listener,int userId){
+        OkHttpUtils.get()
+                .url(VenueAPI.UserUrl)
+                .addHeader("Authorization", Preference.getApiToken(context))
+                .addParams("type","byId")
+                .addParams("value", String.valueOf(userId))
+                .build()
+                .connTimeOut(2000)
+                .readTimeOut(2000)
+                .writeTimeOut(2000)
+                .execute(new StringCallback()
+                {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        Log.e("OKHttpAAA",e.getMessage());
+                        listener.onError(e);
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        Log.e("OKHttpAAA",response);
+                        String entity=JsonUtil.getEntity(response);
+                        if (!TextUtils.isEmpty(entity)){
+                            BeanUtil.setUserMessage(JsonUtil.parseJsonWithGson(entity, UserMessage.class));
+                            listener.onSuccess();;
+                        }
+                        listener.onSuccess();
+                    }
+                });
+    }
+
+    public static void getTimeLineRecent(final Context context, final JudgeListener listener){
+        OkHttpUtils.get()
+                .url("http://119.23.142.44/api/timeline?")
+                .addHeader("Authorization", Preference.getApiToken(context))
+                .addParams("id", String.valueOf(Preference.getTimeLineId(context)))
+                .build()
+                .execute(new Callback() {
+                    @Override
+                    public Object parseNetworkResponse(Response response, int id) throws Exception {
+                        return response.body().string();
+                    }
+
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        listener.onError(e);
+                    }
+
+                    @Override
+                    public void onResponse(Object response, int id) {
+                        if (JsonUtil.judgeError(response.toString()).equals("")){
+//                            JsonUtil.getString("title",)
+                        }else {
+                            ShowUtil.showToast(context,"出错了");
+                        }
                     }
                 });
     }
