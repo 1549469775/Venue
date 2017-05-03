@@ -1,6 +1,7 @@
 package com.example.jhon.venue.Adapter;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.hardware.display.DisplayManager;
 import android.util.DisplayMetrics;
 import android.view.Display;
@@ -8,6 +9,10 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.Request;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SizeReadyCallback;
+import com.bumptech.glide.request.target.Target;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.jhon.venue.Bean.Story;
@@ -43,7 +48,9 @@ public class QuickAdapter extends BaseQuickAdapter<Story, BaseViewHolder> {
         ImageView kenBurnsView=((ImageView)helper.getView(R.id.imageKenBurns));
 
         Glide.with(context).load(VenueAPI.DownloadFileUrl+item.getCover())
-                .placeholder(R.drawable.tesst).override(ScreenUtil.getScreenWidth(context),ScreenUtil.getScreenHeight(context)/3).centerCrop().into(kenBurnsView);
+                .placeholder(R.drawable.tesst)
+                .override(ScreenUtil.getScreenWidth(context),ScreenUtil.getScreenHeight(context)/3)
+                .centerCrop().into(kenBurnsView);
 //        kenBurnsView.setImageResource(R.drawable.material_design_1);
     }
 }

@@ -2,18 +2,14 @@ package com.example.jhon.venue.Map;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.os.Bundle;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
 
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.model.BitmapDescriptorFactory;
 import com.amap.api.maps.model.LatLng;
-import com.amap.api.maps.model.LatLngBounds;
 import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.utils.SpatialRelationUtil;
@@ -30,57 +26,83 @@ import com.example.jhon.venue.UI.ShowUtil;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by John on 2017/4/16.
  */
 
 public class MapUtil {
+    private static MapUtil mapUtil=null;
     public static MapUtil newInstance() {
-
-        Bundle args = new Bundle();
-
-        MapUtil map = new MapUtil();
-        return map;
+        if (mapUtil == null) {
+//            synchronized (MapUtil.class){
+//                if (mapUtil==null){
+                    mapUtil = new MapUtil();
+//                }
+//            }
+        }
+        return mapUtil;
     }
 
-    private int num=0;
+    private static int num=0;
     public void addMarker(final Context context, final List<Story> stories, final AMap aMap, final OnMarkerClicked onMarkerClicked,
                                  final JudgeListener listener){
         for ( int i=0;i<stories.size();i++){
             Glide.with(context).load(VenueAPI.DownloadFileUrl+stories.get(i).getCover()).asBitmap()
-                    .override(35,35).into(new SimpleTarget<Bitmap>() {
+                    .override(35,35).into(new SimpleTarget<Bitmap>(35,35) {
                 @Override
                 public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
-                    View view = LayoutInflater.from(context).inflate(R.layout.map_item, null);
-                    CircleImageView imageView = (CircleImageView) view.findViewById(R.id.img_map);
-                    imageView.setImageBitmap(resource);
-                    MarkerOptions marker=new MarkerOptions();
-                    marker.position(new LatLng(stories.get(num).getLatitude(),stories.get(num).getLongitude()));
-                    marker.title(String.valueOf(num));
-                    marker.icon(BitmapDescriptorFactory.fromView(view));
-                    aMap.addMarker(marker);
-                    aMap.setOnMarkerClickListener(new AMap.OnMarkerClickListener() {
-                        @Override
-                        public boolean onMarkerClick(Marker marker) {
-                            onMarkerClicked.onClick(marker);
-                            return true;
-                        }
-                    });
-                    num++;
-                    if (num==stories.size()-1){
-                        listener.onSuccess();
-                        num=0;
-                    }
-                    ShowUtil.showLog("complete","OnSuccess");
-                    ShowUtil.showLog("complete","OnSuccess"+num);
+//                    synchronized (MapUtil.class){
+                        addPic(context, resource, stories, aMap, new OnMarkerClicked() {
+                            @Override
+                            public void onClick(Marker marker) {
+                                onMarkerClicked.onClick(marker);
+                            }
+                        }, new JudgeListener() {
+                            @Override
+                            public void onSuccess() {
+                                listener.onSuccess();
+                            }
+
+                            @Override
+                            public void onError(Exception e) {
+                                listener.onError(e);
+                            }
+                        });
+//                    }
                 }
             });
         }
     }
 
-    public MapUtil clear(){
-        return null;
+    private void addPic(Context context,Bitmap resource,List<Story> stories,AMap aMap,final OnMarkerClicked onMarkerClicked,
+                        final JudgeListener listener){
+        View view = LayoutInflater.from(context).inflate(R.layout.map_item, null);
+        CircleImageView imageView = (CircleImageView) view.findViewById(R.id.img_map);
+        imageView.setImageBitmap(resource);
+        MarkerOptions marker=new MarkerOptions();
+        marker.position(new LatLng(stories.get(num).getLatitude(),stories.get(num).getLongitude()));
+        marker.title(String.valueOf(num));
+        marker.icon(BitmapDescriptorFactory.fromView(view));
+        aMap.addMarker(marker);
+        aMap.setOnMarkerClickListener(new AMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                onMarkerClicked.onClick(marker);
+                return true;
+            }
+        });
+        num++;
+        if (num==stories.size()-1){
+            listener.onSuccess();
+        }
+        ShowUtil.showLog("complete","OnSuccess");
+        ShowUtil.showLog("complete","OnSuccess"+num);
+    }
+
+    public void clear(){
+        num=0;
     }
 
     public interface OnMarkerClicked{

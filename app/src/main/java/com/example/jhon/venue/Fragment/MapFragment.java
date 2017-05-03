@@ -78,7 +78,6 @@ public class MapFragment extends Fragment {
     private AMap aMap = null;
     private ArrayList<MarkerOptions> list=new ArrayList<>();
     private List<Story> stories=null;
-    private MapUtil mapUtil;
 
     private Location location;
 
@@ -113,7 +112,9 @@ public class MapFragment extends Fragment {
         GetModle.getLocation(getContext(), new ParseListener() {
             @Override
             public void error(Exception e) {
-
+                ShowUtil.showToast(getContext().getApplicationContext(),"出错了");
+                fabChange.setClickable(true);
+                fabChange.setEnabled(true);
             }
 
             @Override
@@ -125,10 +126,7 @@ public class MapFragment extends Fragment {
                     stories.clear();
                     stories.addAll(JsonUtil.stringToList(JsonUtil.getString("list", JsonUtil.getEntity(response.toString())),Story.class));
                 }
-                if (mapUtil==null){
-                    mapUtil=MapUtil.newInstance();
-                }
-                mapUtil.addMarker(getContext(), stories, aMap, new MapUtil.OnMarkerClicked() {
+                MapUtil.newInstance().addMarker(getContext(), stories, aMap, new MapUtil.OnMarkerClicked() {
                     @Override
                     public void onClick(Marker marker) {
                         marker.setAnimation(new AlphaAnimation(1f,0.5f));
@@ -144,12 +142,14 @@ public class MapFragment extends Fragment {
                     public void onSuccess() {
                         fabChange.setClickable(true);
                         fabChange.setEnabled(true);
+                        MapUtil.newInstance().clear();
                     }
 
                     @Override
                     public void onError(Exception e) {
                         fabChange.setClickable(true);
                         fabChange.setEnabled(true);
+                        MapUtil.newInstance().clear();
                     }
                 });
             }

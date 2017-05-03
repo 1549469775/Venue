@@ -84,7 +84,7 @@ public class MainActivity extends BaseActivity {
                             @Override
                             public void parseJson(String response) {
                                 lines = JsonUtil.stringToList(JsonUtil.getString("list", JsonUtil.getEntity(response.toString())), TimeLine.class);
-                                if (lines != null) {
+                                if (lines.size()!=0) {
                                     BeanUtil.setTimeLine(lines.get(0));
                                     EventBus.getDefault().postSticky(BeanUtil.getTimeLine());
                                     ShowUtil.showToast(getApplicationContext(),BeanUtil.getTimeLine().getTitle());

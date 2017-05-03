@@ -1,5 +1,7 @@
 package com.example.jhon.venue.View;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -9,6 +11,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.util.Pair;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
@@ -19,8 +23,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.Target;
 import com.example.jhon.venue.BaseActivity;
 import com.example.jhon.venue.Bean.BeanUtil;
 import com.example.jhon.venue.Bean.LocationData;
@@ -28,12 +34,15 @@ import com.example.jhon.venue.Bean.Story;
 import com.example.jhon.venue.Http.HttpFile;
 import com.example.jhon.venue.Interface.JudgeListener;
 import com.example.jhon.venue.Interface.ParseListener;
+import com.example.jhon.venue.Modle.LoginModle;
 import com.example.jhon.venue.Modle.SubmitModle;
 import com.example.jhon.venue.Preference.SubmitAction;
 import com.example.jhon.venue.R;
 import com.example.jhon.venue.UI.ShowUtil;
 import com.example.jhon.venue.Util.JsonUtil;
+import com.example.jhon.venue.Util.NetworkUtil;
 import com.example.jhon.venue.Util.ScreenUtil;
+import com.example.jhon.venue.Util.TransitionHelper;
 
 import java.io.File;
 
@@ -74,6 +83,8 @@ public class SubmitActivity extends BaseActivity implements SubmitAction.SubmitL
         setupToolbar(true, true);
         getToolbar().setTitle("文章编辑");
         ButterKnife.bind(this);
+
+        get();
     }
 
     @Override
@@ -193,6 +204,12 @@ public class SubmitActivity extends BaseActivity implements SubmitAction.SubmitL
                                 public void onSuccess() {
                                     story=null;
                                     ShowUtil.showSnack(tvSubmitLocation,"发表成功了哦");
+                                    if (getIntent()!=null){
+                                        Intent intent=new Intent();
+                                        intent.putExtra("callback","GOODJOB");
+                                        setResult(13,intent);
+                                        finish();
+                                    }
 //                                ShowUtil.showToast(SubmitActivity.this,"发表成功了哦");
                                 }
 
@@ -220,5 +237,28 @@ public class SubmitActivity extends BaseActivity implements SubmitAction.SubmitL
     @Override
     public Story getStory() {
         return story;
+    }
+
+    private void get(){
+        final Intent intent=getIntent();
+        if (intent!=null){
+            if(NetworkUtil.isNetworkConnected(this)){
+                LoginModle.loginByApiToken(this, new JudgeListener() {
+                    @Override
+                    public void onSuccess() {
+                        imgPath=intent.getStringExtra("path");
+                        Glide.with(SubmitActivity.this).load(intent.getStringExtra("path"))
+                                .override(ScreenUtil.getScreenWidth(SubmitActivity.this), Target.SIZE_ORIGINAL)
+                                .centerCrop().into(imgSubmitBooktop);
+                        Toast.makeText(getApplicationContext(),"已登陆",Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onError(Exception e) {
+                        Toast.makeText(getApplicationContext(),"登陆失败",Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        }
     }
 }

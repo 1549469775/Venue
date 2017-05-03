@@ -4,10 +4,12 @@ import android.content.Context;
 import android.util.Log;
 
 import com.example.jhon.venue.Bean.BeanUtil;
+import com.example.jhon.venue.Bean.EyeOn;
 import com.example.jhon.venue.Bean.Preference;
 import com.example.jhon.venue.Bean.Story;
 import com.example.jhon.venue.Interface.JudgeListener;
 import com.example.jhon.venue.Interface.ParseListener;
+import com.example.jhon.venue.Interface.ResultListener;
 import com.example.jhon.venue.Util.JsonUtil;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
@@ -133,8 +135,6 @@ public class GetModle {
             @Override
             public void onResponse(String response, int id) {
                 listener.parseJson(response.toString());
-                Log.d("getLocation", "onResponse: "+response.toString());
-//                JsonUtil.stringToList(JsonUtil.getString("list",JsonUtil.getEntity(response.toString())),Story.class);
             }
         });
     }

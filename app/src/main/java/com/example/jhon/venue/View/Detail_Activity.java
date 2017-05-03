@@ -25,6 +25,7 @@ import com.example.jhon.venue.Bean.VenueAPI;
 import com.example.jhon.venue.Entity.MultipleItem;
 import com.example.jhon.venue.R;
 import com.example.jhon.venue.UI.ShowUtil;
+import com.example.jhon.venue.Util.ScreenUtil;
 import com.flaviofaria.kenburnsview.KenBurnsView;
 
 import org.greenrobot.eventbus.EventBus;
@@ -111,27 +112,8 @@ public class Detail_Activity extends BaseActivity {
 //        ShowUtil.showToast(this,story.getTitle());
         this.story=story;
         Glide.with(this).load(VenueAPI.DownloadFileUrl+story.getCover())
-                .placeholder(R.drawable.tesst).override(getScreenWidth(),getScreenHeight()/3).centerCrop().into(imgDetailBg);
-//        Log.d("xyxxyx","sticky");
-//        Log.d("xyxxyx","initView");
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-    }
-
-    public int getScreenWidth(){
-        WindowManager windowManager= (WindowManager) this.getSystemService(Context.WINDOW_SERVICE);
-        DisplayMetrics metrics=new DisplayMetrics();
-        windowManager.getDefaultDisplay().getMetrics(metrics);
-        return metrics.widthPixels;
-    }
-
-    public int getScreenHeight(){
-        WindowManager windowManager= (WindowManager) this.getSystemService(Context.WINDOW_SERVICE);
-        DisplayMetrics metrics=new DisplayMetrics();
-        windowManager.getDefaultDisplay().getMetrics(metrics);
-        return metrics.heightPixels;
+                .placeholder(R.drawable.tesst).override(
+                        ScreenUtil.getScreenWidth(this),
+                ScreenUtil.getScreenHeight(this)/3).centerCrop().into(imgDetailBg);
     }
 }
