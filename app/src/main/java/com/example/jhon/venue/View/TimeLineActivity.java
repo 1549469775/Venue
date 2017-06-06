@@ -1,26 +1,30 @@
 package com.example.jhon.venue.View;
 
 import android.content.DialogInterface;
-import android.graphics.Color;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.MapView;
 import com.amap.api.maps.UiSettings;
+import com.amap.api.maps.model.Marker;
+import com.amap.api.maps.model.animation.AlphaAnimation;
+import com.example.jhon.venue.Adapter.TimeLineAdapter;
 import com.example.jhon.venue.BaseActivity;
 import com.example.jhon.venue.Bean.BeanUtil;
 import com.example.jhon.venue.Bean.Preference;
 import com.example.jhon.venue.Bean.TimeLine;
-import com.example.jhon.venue.Entity.MessageEvent;
 import com.example.jhon.venue.Interface.JudgeListener;
 import com.example.jhon.venue.Interface.ParseListener;
 import com.example.jhon.venue.Map.Location;
+import com.example.jhon.venue.Map.MapUtil;
 import com.example.jhon.venue.Modle.TimeLineModle;
 import com.example.jhon.venue.R;
 import com.example.jhon.venue.UI.ShowUtil;
@@ -30,7 +34,6 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -48,6 +51,8 @@ public class TimeLineActivity extends BaseActivity {
     TextView tvTimelineTitle;
     @BindView(R.id.tv_timeline_time)
     TextView tvTimelineTime;
+    @BindView(R.id.rv_timeLine)
+    RecyclerView rvTimeLine;
 
     private AMap aMap = null;
     private Bundle savedInstanceState;
@@ -72,18 +77,42 @@ public class TimeLineActivity extends BaseActivity {
             aMap.clear();
             UiSettings settings = aMap.getUiSettings();
             settings.setLogoPosition(0);
-            settings.setScrollGesturesEnabled(false); //这个方法设置了地图是否允许通过手势来移动。
+//            settings.setScrollGesturesEnabled(false); //这个方法设置了地图是否允许通过手势来移动。
             settings.setTiltGesturesEnabled(false);//这个方法设置了地图是否允许通过手势来倾斜。
             settings.setMyLocationButtonEnabled(false);// 设置默认定位按钮是否显示
             settings.setZoomControlsEnabled(false);//这个方法设置了地图是否允许显示缩放按钮。
             settings.setRotateGesturesEnabled(false);//这个方法设置了地图是否允许通过手势来旋转。
             mapTimeline.setEnabled(false);
         }
+        rvTimeLine.setLayoutManager(new LinearLayoutManager(this));
+        rvTimeLine.setAdapter(new TimeLineAdapter(TimeLineActivity.this,BeanUtil.getList()));
     }
 
     @Override
     public void initOperation() {
+        location = Location.newInstance(this, mapTimeline);
+        MapUtil.newInstance().addMarker(this, BeanUtil.getList(), aMap, new MapUtil.OnMarkerClicked() {
+            @Override
+            public void onClick(Marker marker) {
+                marker.setAnimation(new AlphaAnimation(1f, 0.5f));
+                marker.startAnimation();
+                ShowUtil.showToast(TimeLineActivity.this, BeanUtil.getList().get(Integer.parseInt(marker.getTitle())).getTitle() + "sdasda");
 
+                //页面跳转，详情页
+                EventBus.getDefault().postSticky(BeanUtil.getList().get(Integer.parseInt(marker.getTitle())));
+                startActivity(new Intent(TimeLineActivity.this, Detail_Activity.class));
+            }
+        }, new JudgeListener() {
+            @Override
+            public void onSuccess() {
+                MapUtil.newInstance().clear();
+            }
+
+            @Override
+            public void onError(Exception e) {
+
+            }
+        });
     }
 
     @OnClick(R.id.card_timeline)
@@ -162,8 +191,8 @@ public class TimeLineActivity extends BaseActivity {
         }
     }
 
-    private void showAddDialog(){
-        final EditText editText=new EditText(this);
+    private void showAddDialog() {
+        final EditText editText = new EditText(this);
         editText.setHint("时间轴标题");
         AlertDialog alertDialog = new AlertDialog.Builder(this)
                 .setTitle("创建时间轴")
@@ -174,8 +203,8 @@ public class TimeLineActivity extends BaseActivity {
                         TimeLineModle.createTimeLine(TimeLineActivity.this, editText.getText().toString(), new JudgeListener() {
                             @Override
                             public void onSuccess() {
-                                ShowUtil.showToast(TimeLineActivity.this,"创建时间轴成功");
-                                Preference.saveTimeLineId(TimeLineActivity.this,BeanUtil.getTimeLine().getId());
+                                ShowUtil.showToast(TimeLineActivity.this, "创建时间轴成功");
+                                Preference.saveTimeLineId(TimeLineActivity.this, BeanUtil.getTimeLine().getId());
                             }
 
                             @Override
@@ -190,8 +219,8 @@ public class TimeLineActivity extends BaseActivity {
     }
 
     //EventBus-----------
-    @Subscribe(sticky = true,threadMode = ThreadMode.MAIN)
-    public void eventBus(TimeLine  timeLine){
+    @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
+    public void eventBus(TimeLine timeLine) {
         tvTimelineTitle.setText(timeLine.getTitle());
     }
     //EventBus-----------
@@ -226,5 +255,12 @@ public class TimeLineActivity extends BaseActivity {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
         mapTimeline.onDestroy();
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
     }
 }

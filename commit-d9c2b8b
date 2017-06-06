@@ -1,0 +1,2011 @@
+From d9c2b8b32a6d441bc243e1486a19f9f6fab3fa90 Mon Sep 17 00:00:00 2001
+From: king <1549469775@qq.com>
+Date: Wed, 3 May 2017 12:33:32 +0800
+Subject: Signed-off-by: king <1549469775@qq.com>
+
+
+diff --git a/.idea/encodings.xml b/.idea/encodings.xml
+index 97626ba..fdea373 100644
+--- a/.idea/encodings.xml
++++ b/.idea/encodings.xml
+@@ -1,6 +1,7 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="Encoding">
++    <file url="file://$PROJECT_DIR$/README.md" charset="UTF-8" />
+     <file url="PROJECT" charset="UTF-8" />
+   </component>
+ </project>
+\ No newline at end of file
+diff --git a/.idea/markdown-navigator.xml b/.idea/markdown-navigator.xml
+new file mode 100644
+index 0000000..4fdc309
+--- /dev/null
++++ b/.idea/markdown-navigator.xml
+@@ -0,0 +1,70 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="MarkdownProjectSettings">
++    <PreviewSettings splitEditorLayout="SPLIT" splitEditorPreview="PREVIEW" useGrayscaleRendering="false" zoomFactor="1.0" maxImageWidth="0" showGitHubPageIfSynced="false" allowBrowsingInPreview="false" synchronizePreviewPosition="true" highlightPreviewType="NONE" highlightFadeOut="5" highlightOnTyping="true" synchronizeSourcePosition="true" verticallyAlignSourceAndPreviewSyncPosition="true" showSearchHighlightsInPreview="false" showSelectionInPreview="true">
++      <PanelProvider>
++        <provider providerId="com.vladsch.idea.multimarkdown.editor.swing.html.panel" providerName="Default - Swing" />
++      </PanelProvider>
++    </PreviewSettings>
++    <ParserSettings>
++      <PegdownExtensions>
++        <option name="ABBREVIATIONS" value="false" />
++        <option name="ANCHORLINKS" value="true" />
++        <option name="ASIDE" value="false" />
++        <option name="ATXHEADERSPACE" value="true" />
++        <option name="AUTOLINKS" value="true" />
++        <option name="DEFINITIONS" value="false" />
++        <option name="FENCED_CODE_BLOCKS" value="true" />
++        <option name="FOOTNOTES" value="false" />
++        <option name="HARDWRAPS" value="false" />
++        <option name="INSERTED" value="false" />
++        <option name="QUOTES" value="false" />
++        <option name="RELAXEDHRULES" value="true" />
++        <option name="SMARTS" value="false" />
++        <option name="STRIKETHROUGH" value="true" />
++        <option name="SUBSCRIPT" value="false" />
++        <option name="SUPERSCRIPT" value="false" />
++        <option name="SUPPRESS_HTML_BLOCKS" value="false" />
++        <option name="SUPPRESS_INLINE_HTML" value="false" />
++        <option name="TABLES" value="true" />
++        <option name="TASKLISTITEMS" value="true" />
++        <option name="TOC" value="false" />
++        <option name="WIKILINKS" value="true" />
++      </PegdownExtensions>
++      <ParserOptions>
++        <option name="COMMONMARK_LISTS" value="false" />
++        <option name="DUMMY" value="false" />
++        <option name="EMOJI_SHORTCUTS" value="true" />
++        <option name="FLEXMARK_FRONT_MATTER" value="false" />
++        <option name="GFM_LOOSE_BLANK_LINE_AFTER_ITEM_PARA" value="true" />
++        <option name="GFM_TABLE_RENDERING" value="true" />
++        <option name="GITBOOK_URL_ENCODING" value="false" />
++        <option name="GITHUB_EMOJI_URL" value="false" />
++        <option name="GITHUB_LISTS" value="true" />
++        <option name="GITHUB_WIKI_LINKS" value="true" />
++        <option name="JEKYLL_FRONT_MATTER" value="false" />
++        <option name="SIM_TOC_BLANK_LINE_SPACER" value="true" />
++      </ParserOptions>
++    </ParserSettings>
++    <HtmlSettings headerTopEnabled="false" headerBottomEnabled="false" bodyTopEnabled="false" bodyBottomEnabled="false" embedUrlContent="false" addPageHeader="true">
++      <GeneratorProvider>
++        <provider providerId="com.vladsch.idea.multimarkdown.editor.swing.html.generator" providerName="Default Swing HTML Generator" />
++      </GeneratorProvider>
++      <headerTop />
++      <headerBottom />
++      <bodyTop />
++      <bodyBottom />
++    </HtmlSettings>
++    <CssSettings previewScheme="UI_SCHEME" cssUri="" isCssUriEnabled="false" isCssTextEnabled="false" isDynamicPageWidth="true">
++      <StylesheetProvider>
++        <provider providerId="com.vladsch.idea.multimarkdown.editor.swing.html.css" providerName="Default Swing Stylesheet" />
++      </StylesheetProvider>
++      <ScriptProviders />
++      <cssText />
++    </CssSettings>
++    <HtmlExportSettings updateOnSave="false" parentDir="$ProjectFileDir$" targetDir="$ProjectFileDir$" cssDir="" scriptDir="" plainHtml="false" imageDir="" copyLinkedImages="false" imageUniquifyType="0" targetExt="" useTargetExt="false" noCssNoScripts="false" linkToExportedHtml="true" exportOnSettingsChange="true" regenerateOnProjectOpen="false" />
++    <LinkMapSettings>
++      <textMaps />
++    </LinkMapSettings>
++  </component>
++</project>
+\ No newline at end of file
+diff --git a/.idea/markdown-navigator/profiles_settings.xml b/.idea/markdown-navigator/profiles_settings.xml
+new file mode 100644
+index 0000000..57927c5
+--- /dev/null
++++ b/.idea/markdown-navigator/profiles_settings.xml
+@@ -0,0 +1,3 @@
++<component name="MarkdownNavigator.ProfileManager">
++  <settings default="" pdf-export="" />
++</component>
+\ No newline at end of file
+diff --git a/New.patch b/New.patch
+new file mode 100644
+index 0000000..9ed29b4
+--- /dev/null
++++ b/New.patch
+@@ -0,0 +1,1023 @@
++Index: app/src/main/res/layout/detail_user.xml
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++--- app/src/main/res/layout/detail_user.xml	(revision aa2485d9bf39f753d9a24b587d6a430d00c063eb)
+++++ app/src/main/res/layout/detail_user.xml	(revision )
++@@ -5,39 +5,56 @@
++     android:layout_height="wrap_content"
++     android:layout_marginStart="10dp"
++     android:layout_marginEnd="10dp"
++-    xmlns:app="http://schemas.android.com/apk/res-auto"
++     card_view:cardCornerRadius="0dp"
++     card_view:cardElevation="0.5dp">
++-
+++    <LinearLayout
+++        android:orientation="vertical"
+++        android:layout_width="match_parent"
+++        android:layout_height="match_parent">
++-    <RelativeLayout
++-        android:layout_width="match_parent"
++-        android:layout_height="match_parent">
++-        <com.example.jhon.venue.UI.CircleImageView
++-            android:id="@+id/img_detail_user"
++-            android:scaleType="centerCrop"
++-            android:src="@drawable/bg_person"
++-            android:layout_marginStart="10dp"
++-            android:layout_marginTop="10dp"
++-            android:layout_marginEnd="5dp"
++-            android:layout_marginBottom="10dp"
++-            android:layout_width="50dp"
++-            android:layout_height="50dp" />
++-        <TextView
++-            android:id="@+id/tv_detail_name"
++-            android:layout_centerVertical="true"
++-            android:layout_toEndOf="@+id/img_detail_user"
++-            android:text="@string/app_name"
++-            android:textSize="25dp"
++-            android:layout_width="wrap_content"
++-            android:layout_height="wrap_content" />
++-        <Button
++-            android:id="@+id/btn_follow"
++-            android:text="关注"
++-            android:layout_marginEnd="10dp"
++-            android:layout_alignParentEnd="true"
++-            android:layout_centerVertical="true"
++-            android:layout_width="wrap_content"
++-            android:layout_height="wrap_content" />
+++        <RelativeLayout
+++            android:layout_width="match_parent"
+++            android:layout_height="match_parent">
+++            <com.example.jhon.venue.UI.CircleImageView
+++                android:id="@+id/img_detail_user"
+++                android:scaleType="centerCrop"
+++                android:src="@drawable/bg_person"
+++                android:layout_marginStart="10dp"
+++                android:layout_marginTop="10dp"
+++                android:layout_marginEnd="5dp"
+++                android:layout_marginBottom="10dp"
+++                android:layout_width="50dp"
+++                android:layout_height="50dp" />
+++            <TextView
+++                android:id="@+id/tv_detail_name"
+++                android:layout_centerVertical="true"
+++                android:layout_toEndOf="@+id/img_detail_user"
+++                android:text="@string/app_name"
+++                android:textSize="25dp"
+++                android:layout_width="wrap_content"
+++                android:layout_height="wrap_content" />
+++            <Button
+++                android:id="@+id/btn_follow"
+++                android:text="关注"
+++                android:layout_marginEnd="10dp"
+++                android:layout_alignParentEnd="true"
+++                android:layout_centerVertical="true"
+++                android:layout_width="wrap_content"
+++                android:layout_height="wrap_content" />
++-    </RelativeLayout>
++ 
+++        </RelativeLayout>
+++        <TextView
+++            android:layout_marginStart="10dp"
+++            android:text="已关注此用户的人："
+++            android:textSize="15dp"
+++            android:layout_width="wrap_content"
+++            android:layout_height="wrap_content" />
+++        <TextView
+++            android:id="@+id/tv_eyeon"
+++            android:layout_marginStart="10dp"
+++            android:ellipsize="end"
+++            android:textSize="10dp"
+++            android:text="无"
+++            android:layout_width="wrap_content"
+++            android:layout_height="wrap_content" />
+++    </LinearLayout>
++ </android.support.v7.widget.CardView>
++Index: app/src/main/java/com/example/jhon/venue/Adapter/MultipleItemQuickAdapter.java
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++--- app/src/main/java/com/example/jhon/venue/Adapter/MultipleItemQuickAdapter.java	(revision aa2485d9bf39f753d9a24b587d6a430d00c063eb)
+++++ app/src/main/java/com/example/jhon/venue/Adapter/MultipleItemQuickAdapter.java	(revision )
++@@ -10,17 +10,21 @@
++ import android.view.LayoutInflater;
++ import android.view.View;
++ import android.widget.Adapter;
+++import android.widget.Button;
++ import android.widget.LinearLayout;
++ 
++ import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
++ import com.chad.library.adapter.base.BaseViewHolder;
++ import com.example.jhon.venue.Bean.BeanUtil;
+++import com.example.jhon.venue.Bean.EyeOn;
+++import com.example.jhon.venue.Bean.Preference;
++ import com.example.jhon.venue.Bean.Story;
++ import com.example.jhon.venue.Bean.UserMessage;
++ import com.example.jhon.venue.Entity.MultipleItem;
++ import com.example.jhon.venue.Interface.JudgeListener;
++ import com.example.jhon.venue.Interface.ResultListener;
++ import com.example.jhon.venue.Modle.CommentModle;
+++import com.example.jhon.venue.Modle.GetModle;
++ import com.example.jhon.venue.Modle.LoginModle;
++ import com.example.jhon.venue.R;
++ import com.example.jhon.venue.UI.ShowUtil;
++@@ -30,12 +34,17 @@
++ import com.example.jhon.venue.View.CommentActivity;
++ import com.example.jhon.venue.View.Detail_Activity;
++ import com.example.jhon.venue.View.LoginActivity;
+++import com.zhy.http.okhttp.OkHttpUtils;
+++import com.zhy.http.okhttp.callback.StringCallback;
++ 
++ import org.greenrobot.eventbus.EventBus;
++ 
++ import java.util.ArrayList;
++ import java.util.List;
++ 
+++import okhttp3.Call;
+++import okhttp3.MediaType;
+++
++ /**
++  * Created by John on 2017/3/27.
++  */
++@@ -43,6 +52,8 @@
++ public class MultipleItemQuickAdapter extends BaseMultiItemQuickAdapter<MultipleItem, BaseViewHolder> {
++ 
++     private Context context;
+++    private long followerId;
+++    private String username;
++ 
++     /**
++      * Same as QuickAdapter#QuickAdapter(Context,int) but with
++@@ -60,7 +71,7 @@
++     }
++ 
++     @Override
++-    protected void convert(BaseViewHolder helper, MultipleItem item) {
+++    protected void convert(final BaseViewHolder helper, MultipleItem item) {
++         Log.d("xyxxyx","convert");
++         switch (helper.getItemViewType()) {
++             case MultipleItem.TITLE:
++@@ -69,8 +80,86 @@
++                 break;
++             case MultipleItem.USER:
++                 getUser(helper, Integer.parseInt(item.getContent()));
++-//                helper.setText(R.id.img_detail_user,item.getContent());
++-//                helper.setImageUrl(R.id.tv, item.getContent());
+++                helper.getView(R.id.btn_follow).setOnClickListener(new View.OnClickListener() {
+++                    @Override
+++                    public void onClick(final View v) {
+++                        if (((Button)helper.getView(R.id.btn_follow)).getText().equals("关注")) {
+++                            eyeOn(new JudgeListener() {
+++                                @Override
+++                                public void onSuccess() {
+++                                    ShowUtil.showSnack(v,"已关注");
+++                                    helper.setText(R.id.btn_follow,"已关注");
+++                                    getEyeOn(context, new ResultListener() {
+++                                        @Override
+++                                        public void error(Exception e) {
+++                                            ShowUtil.showSnack(v,e.getMessage());
+++                                            helper.setText(R.id.tv_eyeon,"获取失败");
+++                                        }
+++
+++                                        @Override
+++                                        public void parseJson(Object object) {
+++                                            List<EyeOn> list= (List<EyeOn>) object;
+++                                            if (list!=null){
+++                                                StringBuffer sb=new StringBuffer();
+++                                                for (EyeOn eyeOn:list){
+++                                                    sb.append(eyeOn.getUsername());
+++                                                    sb.append(",");
+++                                                }
+++                                                helper.setText(R.id.tv_eyeon,sb.toString());
+++                                                notifyDataSetChanged();
+++                                            }else {
+++                                                helper.setText(R.id.tv_eyeon,"尚无");
+++                                            }
+++
+++                                        }
+++                                    });
+++                                }
+++
+++                                @Override
+++                                public void onError(Exception e) {
+++                                    ShowUtil.showSnack(v,e.getMessage());
+++                                }
+++                            });
+++                        }else {
+++                            notEyeOn(new JudgeListener() {
+++                                @Override
+++                                public void onSuccess() {
+++                                    ShowUtil.showSnack(v,"已取消关注");
+++                                    helper.setText(R.id.btn_follow,"关注");
+++                                    getEyeOn(context, new ResultListener() {
+++                                        @Override
+++                                        public void error(Exception e) {
+++                                            ShowUtil.showSnack(v,e.getMessage());
+++                                            helper.setText(R.id.tv_eyeon,"获取失败");
+++                                        }
+++
+++                                        @Override
+++                                        public void parseJson(Object object) {
+++                                            List<EyeOn> list= (List<EyeOn>) object;
+++                                            if (list!=null){
+++                                                StringBuffer sb=new StringBuffer();
+++                                                for (EyeOn eyeOn:list){
+++                                                    sb.append(eyeOn.getUsername());
+++                                                    sb.append(",");
+++                                                }
+++                                                helper.setText(R.id.tv_eyeon,sb.toString());
+++                                                notifyDataSetChanged();
+++                                            }else {
+++                                                helper.setText(R.id.tv_eyeon,"尚无");
+++                                            }
+++                                        }
+++                                    });
+++                                }
+++
+++                                @Override
+++                                public void onError(Exception e) {
+++                                    ShowUtil.showSnack(v,e.getMessage());
+++                                }
+++                            });
+++                        }
+++
+++                    }
+++                });
++                 break;
++             case MultipleItem.CONTENT:
++                     helper.setText(R.id.tv_detail_content,item.getContent());
++@@ -88,6 +177,8 @@
++             @Override
++             public void onSuccess() {
++                 helper.setText(R.id.tv_detail_name, BeanUtil.getUserMessage().getNickname());
+++                followerId=BeanUtil.getUserMessage().getId();
+++                username=BeanUtil.getUserMessage().getUsername();
++             }
++ 
++             @Override
++@@ -108,6 +199,90 @@
++             public void parseJson(Object object) {
++                 String num="当前评论数量为:";
++                 helper.setText(R.id.tv_comment_num,num + (CharSequence) object);
+++            }
+++        });
+++    }
+++
+++    private void eyeOn(final JudgeListener listener){
+++        String data="{"+"\""+"userId"+"\""+":"+ Preference.getUserId(context)+","+"\""+"followerId"+"\""+":"+"\""+followerId+"\""+"}";
+++        ShowUtil.showLog("eyeOn",data);
+++        OkHttpUtils.postString()
+++                .url("http://119.23.142.44/api/user/follow")
+++                .addHeader("Authorization", Preference.getApiToken(context))
+++                .content(data)
+++                .mediaType(MediaType.parse("application/json; charset=utf-8"))
+++                .build()
+++                .execute(new StringCallback() {
+++                    @Override
+++                    public void onError(Call call, Exception e, int id) {
+++                        if (null!=e){
+++                            listener.onError(e);
+++                        }
+++                    }
+++
+++                    @Override
+++                    public void onResponse(String response, int id) {
+++                        if (JsonUtil.judgeError(response)!=""){
+++                            listener.onSuccess();
+++                        }else {
+++                            listener.onError(new Exception(JsonUtil.judgeError(response)));
+++                        }
+++                    }
+++                });
+++    }
+++
+++    private void notEyeOn(final JudgeListener listener){
+++        String data="{"+"\""+"userId"+"\""+":"+ Preference.getUserId(context)+","+"\""+"followerId"+"\""+":"+"\""+followerId+"\""+"}";
+++        ShowUtil.showLog("eyeOn",data);
+++        OkHttpUtils.postString()
+++                .url("http://119.23.142.44/api/user/unfollow")
+++                .addHeader("Authorization", Preference.getApiToken(context))
+++                .content(data)
+++                .mediaType(MediaType.parse("application/json; charset=utf-8"))
+++                .build()
+++                .execute(new StringCallback() {
+++                    @Override
+++                    public void onError(Call call, Exception e, int id) {
+++                        if (null!=e){
+++                            listener.onError(e);
+++                        }
+++                    }
+++
+++                    @Override
+++                    public void onResponse(String response, int id) {
+++                        if (JsonUtil.judgeError(response)!=""){
+++                            listener.onSuccess();
+++                        }else {
+++                            listener.onError(new Exception(JsonUtil.judgeError(response)));
+++                        }
+++                    }
+++                });
+++    }
+++
+++    private void getEyeOn(Context context, final ResultListener listener){
+++        Log.d("getEyeOn", "onStart ");
+++        OkHttpUtils.get()
+++                .url("http://119.23.142.44/api/user/follower/list?")
+++                .addHeader("Authorization", Preference.getApiToken(context))
+++                .addParams("username", username)
+++                .addParams("start", String.valueOf(0))
+++                .addParams("end", String.valueOf(10))
+++                .build().execute(new StringCallback() {
+++            @Override
+++            public void onError(Call call, Exception e, int id) {
+++                if (e!=null){
+++                    listener.error(e);
+++                }
+++            }
+++
+++            @Override
+++            public void onResponse(String response, int id) {
+++                Log.d("getEyeOn", "onResponse: "+response.toString());
+++                if (JsonUtil.judgeError(response)!=""){
+++                    listener.parseJson(JsonUtil.stringToList(JsonUtil.getString("list",JsonUtil.getEntity(response.toString())),EyeOn.class));
+++                }else {
+++                    listener.error(new Exception(JsonUtil.judgeError(response)));
+++                }
++             }
++         });
++     }
++\ No newline at end of file
++Index: app/src/main/java/com/example/jhon/venue/View/SubmitActivity.java
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++--- app/src/main/java/com/example/jhon/venue/View/SubmitActivity.java	(revision aa2485d9bf39f753d9a24b587d6a430d00c063eb)
+++++ app/src/main/java/com/example/jhon/venue/View/SubmitActivity.java	(revision )
++@@ -1,5 +1,7 @@
++ package com.example.jhon.venue.View;
++ 
+++import android.content.BroadcastReceiver;
+++import android.content.Context;
++ import android.content.DialogInterface;
++ import android.content.Intent;
++ import android.database.Cursor;
++@@ -9,6 +11,8 @@
++ import android.os.Bundle;
++ import android.provider.MediaStore;
++ import android.support.design.widget.Snackbar;
+++import android.support.v4.app.ActivityOptionsCompat;
+++import android.support.v4.util.Pair;
++ import android.support.v7.app.AlertDialog;
++ import android.util.Log;
++ import android.view.View;
++@@ -19,8 +23,10 @@
++ import android.widget.LinearLayout;
++ import android.widget.Switch;
++ import android.widget.TextView;
+++import android.widget.Toast;
++ 
++ import com.bumptech.glide.Glide;
+++import com.bumptech.glide.request.target.Target;
++ import com.example.jhon.venue.BaseActivity;
++ import com.example.jhon.venue.Bean.BeanUtil;
++ import com.example.jhon.venue.Bean.LocationData;
++@@ -28,12 +34,15 @@
++ import com.example.jhon.venue.Http.HttpFile;
++ import com.example.jhon.venue.Interface.JudgeListener;
++ import com.example.jhon.venue.Interface.ParseListener;
+++import com.example.jhon.venue.Modle.LoginModle;
++ import com.example.jhon.venue.Modle.SubmitModle;
++ import com.example.jhon.venue.Preference.SubmitAction;
++ import com.example.jhon.venue.R;
++ import com.example.jhon.venue.UI.ShowUtil;
++ import com.example.jhon.venue.Util.JsonUtil;
+++import com.example.jhon.venue.Util.NetworkUtil;
++ import com.example.jhon.venue.Util.ScreenUtil;
+++import com.example.jhon.venue.Util.TransitionHelper;
++ 
++ import java.io.File;
++ 
++@@ -74,6 +83,8 @@
++         setupToolbar(true, true);
++         getToolbar().setTitle("文章编辑");
++         ButterKnife.bind(this);
+++
+++        get();
++     }
++ 
++     @Override
++@@ -193,6 +204,12 @@
++                                 public void onSuccess() {
++                                     story=null;
++                                     ShowUtil.showSnack(tvSubmitLocation,"发表成功了哦");
+++                                    if (getIntent()!=null){
+++                                        Intent intent=new Intent();
+++                                        intent.putExtra("callback","GOODJOB");
+++                                        setResult(13,intent);
+++                                        finish();
+++                                    }
++ //                                ShowUtil.showToast(SubmitActivity.this,"发表成功了哦");
++                                 }
++ 
++@@ -220,5 +237,28 @@
++     @Override
++     public Story getStory() {
++         return story;
+++    }
+++
+++    private void get(){
+++        final Intent intent=getIntent();
+++        if (intent!=null){
+++            if(NetworkUtil.isNetworkConnected(this)){
+++                LoginModle.loginByApiToken(this, new JudgeListener() {
+++                    @Override
+++                    public void onSuccess() {
+++                        imgPath=intent.getStringExtra("path");
+++                        Glide.with(SubmitActivity.this).load(intent.getStringExtra("path"))
+++                                .override(ScreenUtil.getScreenWidth(SubmitActivity.this), Target.SIZE_ORIGINAL)
+++                                .centerCrop().into(imgSubmitBooktop);
+++                        Toast.makeText(getApplicationContext(),"已登陆",Toast.LENGTH_SHORT).show();
+++                    }
+++
+++                    @Override
+++                    public void onError(Exception e) {
+++                        Toast.makeText(getApplicationContext(),"登陆失败",Toast.LENGTH_SHORT).show();
+++                    }
+++                });
+++            }
+++        }
++     }
++ }
++Index: app/src/main/java/com/example/jhon/venue/Map/MapUtil.java
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++--- app/src/main/java/com/example/jhon/venue/Map/MapUtil.java	(revision aa2485d9bf39f753d9a24b587d6a430d00c063eb)
+++++ app/src/main/java/com/example/jhon/venue/Map/MapUtil.java	(revision )
++@@ -2,18 +2,14 @@
++ 
++ import android.content.Context;
++ import android.graphics.Bitmap;
++-import android.graphics.Color;
++-import android.os.Bundle;
++ import android.util.Pair;
++ import android.view.LayoutInflater;
++ import android.view.View;
++-import android.widget.ImageView;
++ 
++ import com.amap.api.maps.AMap;
++ import com.amap.api.maps.CameraUpdateFactory;
++ import com.amap.api.maps.model.BitmapDescriptorFactory;
++ import com.amap.api.maps.model.LatLng;
++-import com.amap.api.maps.model.LatLngBounds;
++ import com.amap.api.maps.model.Marker;
++ import com.amap.api.maps.model.MarkerOptions;
++ import com.amap.api.maps.utils.SpatialRelationUtil;
++@@ -30,57 +26,83 @@
++ 
++ import java.util.ArrayList;
++ import java.util.List;
+++import java.util.concurrent.ExecutionException;
++ 
++ /**
++  * Created by John on 2017/4/16.
++  */
++ 
++ public class MapUtil {
+++    private static MapUtil mapUtil=null;
++     public static MapUtil newInstance() {
++-
++-        Bundle args = new Bundle();
++-
++-        MapUtil map = new MapUtil();
++-        return map;
+++        if (mapUtil == null) {
+++//            synchronized (MapUtil.class){
+++//                if (mapUtil==null){
+++                    mapUtil = new MapUtil();
+++//                }
+++//            }
++-    }
+++        }
+++        return mapUtil;
+++    }
++ 
++-    private int num=0;
+++    private static int num=0;
++     public void addMarker(final Context context, final List<Story> stories, final AMap aMap, final OnMarkerClicked onMarkerClicked,
++                                  final JudgeListener listener){
++         for ( int i=0;i<stories.size();i++){
++             Glide.with(context).load(VenueAPI.DownloadFileUrl+stories.get(i).getCover()).asBitmap()
++-                    .override(35,35).into(new SimpleTarget<Bitmap>() {
+++                    .override(35,35).into(new SimpleTarget<Bitmap>(35,35) {
++                 @Override
++                 public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
+++//                    synchronized (MapUtil.class){
+++                        addPic(context, resource, stories, aMap, new OnMarkerClicked() {
+++                            @Override
+++                            public void onClick(Marker marker) {
+++                                onMarkerClicked.onClick(marker);
+++                            }
+++                        }, new JudgeListener() {
+++                            @Override
+++                            public void onSuccess() {
+++                                listener.onSuccess();
+++                            }
+++
+++                            @Override
+++                            public void onError(Exception e) {
+++                                listener.onError(e);
+++                            }
+++                        });
+++//                    }
+++                }
+++            });
+++        }
+++    }
+++
+++    private void addPic(Context context,Bitmap resource,List<Story> stories,AMap aMap,final OnMarkerClicked onMarkerClicked,
+++                        final JudgeListener listener){
++-                    View view = LayoutInflater.from(context).inflate(R.layout.map_item, null);
++-                    CircleImageView imageView = (CircleImageView) view.findViewById(R.id.img_map);
++-                    imageView.setImageBitmap(resource);
++-                    MarkerOptions marker=new MarkerOptions();
++-                    marker.position(new LatLng(stories.get(num).getLatitude(),stories.get(num).getLongitude()));
++-                    marker.title(String.valueOf(num));
++-                    marker.icon(BitmapDescriptorFactory.fromView(view));
++-                    aMap.addMarker(marker);
++-                    aMap.setOnMarkerClickListener(new AMap.OnMarkerClickListener() {
++-                        @Override
++-                        public boolean onMarkerClick(Marker marker) {
++-                            onMarkerClicked.onClick(marker);
++-                            return true;
++-                        }
++-                    });
++-                    num++;
++-                    if (num==stories.size()-1){
++-                        listener.onSuccess();
+++        View view = LayoutInflater.from(context).inflate(R.layout.map_item, null);
+++        CircleImageView imageView = (CircleImageView) view.findViewById(R.id.img_map);
+++        imageView.setImageBitmap(resource);
+++        MarkerOptions marker=new MarkerOptions();
+++        marker.position(new LatLng(stories.get(num).getLatitude(),stories.get(num).getLongitude()));
+++        marker.title(String.valueOf(num));
+++        marker.icon(BitmapDescriptorFactory.fromView(view));
+++        aMap.addMarker(marker);
+++        aMap.setOnMarkerClickListener(new AMap.OnMarkerClickListener() {
+++            @Override
+++            public boolean onMarkerClick(Marker marker) {
+++                onMarkerClicked.onClick(marker);
+++                return true;
+++            }
+++        });
+++        num++;
+++        if (num==stories.size()-1){
+++            listener.onSuccess();
++-                        num=0;
++-                    }
++-                    ShowUtil.showLog("complete","OnSuccess");
++-                    ShowUtil.showLog("complete","OnSuccess"+num);
++-                }
+++        }
+++        ShowUtil.showLog("complete","OnSuccess");
+++        ShowUtil.showLog("complete","OnSuccess"+num);
+++    }
++-            });
++-        }
++-    }
++ 
++-    public MapUtil clear(){
++-        return null;
+++    public void clear(){
+++        num=0;
++     }
++ 
++     public interface OnMarkerClicked{
++Index: app/src/main/java/com/example/jhon/venue/View/Detail_Activity.java
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++--- app/src/main/java/com/example/jhon/venue/View/Detail_Activity.java	(revision aa2485d9bf39f753d9a24b587d6a430d00c063eb)
+++++ app/src/main/java/com/example/jhon/venue/View/Detail_Activity.java	(revision )
++@@ -25,6 +25,7 @@
++ import com.example.jhon.venue.Entity.MultipleItem;
++ import com.example.jhon.venue.R;
++ import com.example.jhon.venue.UI.ShowUtil;
+++import com.example.jhon.venue.Util.ScreenUtil;
++ import com.flaviofaria.kenburnsview.KenBurnsView;
++ 
++ import org.greenrobot.eventbus.EventBus;
++@@ -111,27 +112,8 @@
++ //        ShowUtil.showToast(this,story.getTitle());
++         this.story=story;
++         Glide.with(this).load(VenueAPI.DownloadFileUrl+story.getCover())
++-                .placeholder(R.drawable.tesst).override(getScreenWidth(),getScreenHeight()/3).centerCrop().into(imgDetailBg);
++-//        Log.d("xyxxyx","sticky");
++-//        Log.d("xyxxyx","initView");
++-    }
++-
++-    @Override
++-    public void onBackPressed() {
++-        super.onBackPressed();
++-    }
++-
++-    public int getScreenWidth(){
++-        WindowManager windowManager= (WindowManager) this.getSystemService(Context.WINDOW_SERVICE);
++-        DisplayMetrics metrics=new DisplayMetrics();
++-        windowManager.getDefaultDisplay().getMetrics(metrics);
++-        return metrics.widthPixels;
++-    }
++-
++-    public int getScreenHeight(){
++-        WindowManager windowManager= (WindowManager) this.getSystemService(Context.WINDOW_SERVICE);
++-        DisplayMetrics metrics=new DisplayMetrics();
++-        windowManager.getDefaultDisplay().getMetrics(metrics);
++-        return metrics.heightPixels;
+++                .placeholder(R.drawable.tesst).override(
+++                        ScreenUtil.getScreenWidth(this),
+++                ScreenUtil.getScreenHeight(this)/3).centerCrop().into(imgDetailBg);
++     }
++ }
++Index: .idea/markdown-navigator/profiles_settings.xml
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++--- .idea/markdown-navigator/profiles_settings.xml	(revision )
+++++ .idea/markdown-navigator/profiles_settings.xml	(revision )
++@@ -0,0 +1,3 @@
+++<component name="MarkdownNavigator.ProfileManager">
+++  <settings default="" pdf-export="" />
+++</component>
++\ No newline at end of file
++Index: app/src/main/java/com/example/jhon/venue/View/MainActivity.java
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++--- app/src/main/java/com/example/jhon/venue/View/MainActivity.java	(revision aa2485d9bf39f753d9a24b587d6a430d00c063eb)
+++++ app/src/main/java/com/example/jhon/venue/View/MainActivity.java	(revision )
++@@ -84,7 +84,7 @@
++                             @Override
++                             public void parseJson(String response) {
++                                 lines = JsonUtil.stringToList(JsonUtil.getString("list", JsonUtil.getEntity(response.toString())), TimeLine.class);
++-                                if (lines != null) {
+++                                if (lines.size()!=0) {
++                                     BeanUtil.setTimeLine(lines.get(0));
++                                     EventBus.getDefault().postSticky(BeanUtil.getTimeLine());
++                                     ShowUtil.showToast(getApplicationContext(),BeanUtil.getTimeLine().getTitle());
++Index: app/src/main/java/com/example/jhon/venue/Modle/GetModle.java
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++--- app/src/main/java/com/example/jhon/venue/Modle/GetModle.java	(revision aa2485d9bf39f753d9a24b587d6a430d00c063eb)
+++++ app/src/main/java/com/example/jhon/venue/Modle/GetModle.java	(revision )
++@@ -4,10 +4,12 @@
++ import android.util.Log;
++ 
++ import com.example.jhon.venue.Bean.BeanUtil;
+++import com.example.jhon.venue.Bean.EyeOn;
++ import com.example.jhon.venue.Bean.Preference;
++ import com.example.jhon.venue.Bean.Story;
++ import com.example.jhon.venue.Interface.JudgeListener;
++ import com.example.jhon.venue.Interface.ParseListener;
+++import com.example.jhon.venue.Interface.ResultListener;
++ import com.example.jhon.venue.Util.JsonUtil;
++ import com.zhy.http.okhttp.OkHttpUtils;
++ import com.zhy.http.okhttp.callback.StringCallback;
++Index: app/src/main/java/com/example/jhon/venue/Adapter/QuickAdapter.java
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++--- app/src/main/java/com/example/jhon/venue/Adapter/QuickAdapter.java	(revision aa2485d9bf39f753d9a24b587d6a430d00c063eb)
+++++ app/src/main/java/com/example/jhon/venue/Adapter/QuickAdapter.java	(revision )
++@@ -1,6 +1,7 @@
++ package com.example.jhon.venue.Adapter;
++ 
++ import android.content.Context;
+++import android.graphics.drawable.Drawable;
++ import android.hardware.display.DisplayManager;
++ import android.util.DisplayMetrics;
++ import android.view.Display;
++@@ -8,6 +9,10 @@
++ import android.widget.ImageView;
++ 
++ import com.bumptech.glide.Glide;
+++import com.bumptech.glide.request.Request;
+++import com.bumptech.glide.request.animation.GlideAnimation;
+++import com.bumptech.glide.request.target.SizeReadyCallback;
+++import com.bumptech.glide.request.target.Target;
++ import com.chad.library.adapter.base.BaseQuickAdapter;
++ import com.chad.library.adapter.base.BaseViewHolder;
++ import com.example.jhon.venue.Bean.Story;
++@@ -43,7 +48,9 @@
++         ImageView kenBurnsView=((ImageView)helper.getView(R.id.imageKenBurns));
++ 
++         Glide.with(context).load(VenueAPI.DownloadFileUrl+item.getCover())
++-                .placeholder(R.drawable.tesst).override(ScreenUtil.getScreenWidth(context),ScreenUtil.getScreenHeight(context)/3).centerCrop().into(kenBurnsView);
+++                .placeholder(R.drawable.tesst)
+++                .override(ScreenUtil.getScreenWidth(context),ScreenUtil.getScreenHeight(context)/3)
+++                .centerCrop().into(kenBurnsView);
++ //        kenBurnsView.setImageResource(R.drawable.material_design_1);
++     }
++ }
++Index: .idea/encodings.xml
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++--- .idea/encodings.xml	(revision aa2485d9bf39f753d9a24b587d6a430d00c063eb)
+++++ .idea/encodings.xml	(revision )
++@@ -1,6 +1,7 @@
++ <?xml version="1.0" encoding="UTF-8"?>
++ <project version="4">
++   <component name="Encoding">
+++    <file url="file://$PROJECT_DIR$/README.md" charset="UTF-8" />
++     <file url="PROJECT" charset="UTF-8" />
++   </component>
++ </project>
++\ No newline at end of file
++Index: app/src/main/AndroidManifest.xml
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++--- app/src/main/AndroidManifest.xml	(revision aa2485d9bf39f753d9a24b587d6a430d00c063eb)
+++++ app/src/main/AndroidManifest.xml	(revision )
++@@ -28,6 +28,7 @@
++             android:name="com.amap.api.v2.apikey"
++             android:value="6111521ca4f52c66341a5e46326b77fa" />
++         <!-- 6111521ca4f52c66341a5e46326b77fa -->
+++
++         <activity
++             android:name=".View.MainActivity"
++             android:label="@string/app_name">
++@@ -40,7 +41,12 @@
++         <activity
++             android:name=".View.LoginActivity"
++             android:theme="@style/Dialog" />
++-        <activity android:name=".View.SubmitActivity" />
+++        <activity android:name=".View.SubmitActivity" >
+++            <intent-filter>
+++                <action android:name="com.jhon.venue"/>
+++                <category android:name="android.intent.category.DEFAULT"/>
+++            </intent-filter>
+++        </activity>
++         <activity android:name=".View.EditorActivity" />
++         <activity android:name=".View.Detail_Activity" />
++         <activity
++\ No newline at end of file
++Index: .idea/markdown-navigator.xml
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++--- .idea/markdown-navigator.xml	(revision )
+++++ .idea/markdown-navigator.xml	(revision )
++@@ -0,0 +1,70 @@
+++<?xml version="1.0" encoding="UTF-8"?>
+++<project version="4">
+++  <component name="MarkdownProjectSettings">
+++    <PreviewSettings splitEditorLayout="SPLIT" splitEditorPreview="PREVIEW" useGrayscaleRendering="false" zoomFactor="1.0" maxImageWidth="0" showGitHubPageIfSynced="false" allowBrowsingInPreview="false" synchronizePreviewPosition="true" highlightPreviewType="NONE" highlightFadeOut="5" highlightOnTyping="true" synchronizeSourcePosition="true" verticallyAlignSourceAndPreviewSyncPosition="true" showSearchHighlightsInPreview="false" showSelectionInPreview="true">
+++      <PanelProvider>
+++        <provider providerId="com.vladsch.idea.multimarkdown.editor.swing.html.panel" providerName="Default - Swing" />
+++      </PanelProvider>
+++    </PreviewSettings>
+++    <ParserSettings>
+++      <PegdownExtensions>
+++        <option name="ABBREVIATIONS" value="false" />
+++        <option name="ANCHORLINKS" value="true" />
+++        <option name="ASIDE" value="false" />
+++        <option name="ATXHEADERSPACE" value="true" />
+++        <option name="AUTOLINKS" value="true" />
+++        <option name="DEFINITIONS" value="false" />
+++        <option name="FENCED_CODE_BLOCKS" value="true" />
+++        <option name="FOOTNOTES" value="false" />
+++        <option name="HARDWRAPS" value="false" />
+++        <option name="INSERTED" value="false" />
+++        <option name="QUOTES" value="false" />
+++        <option name="RELAXEDHRULES" value="true" />
+++        <option name="SMARTS" value="false" />
+++        <option name="STRIKETHROUGH" value="true" />
+++        <option name="SUBSCRIPT" value="false" />
+++        <option name="SUPERSCRIPT" value="false" />
+++        <option name="SUPPRESS_HTML_BLOCKS" value="false" />
+++        <option name="SUPPRESS_INLINE_HTML" value="false" />
+++        <option name="TABLES" value="true" />
+++        <option name="TASKLISTITEMS" value="true" />
+++        <option name="TOC" value="false" />
+++        <option name="WIKILINKS" value="true" />
+++      </PegdownExtensions>
+++      <ParserOptions>
+++        <option name="COMMONMARK_LISTS" value="false" />
+++        <option name="DUMMY" value="false" />
+++        <option name="EMOJI_SHORTCUTS" value="true" />
+++        <option name="FLEXMARK_FRONT_MATTER" value="false" />
+++        <option name="GFM_LOOSE_BLANK_LINE_AFTER_ITEM_PARA" value="true" />
+++        <option name="GFM_TABLE_RENDERING" value="true" />
+++        <option name="GITBOOK_URL_ENCODING" value="false" />
+++        <option name="GITHUB_EMOJI_URL" value="false" />
+++        <option name="GITHUB_LISTS" value="true" />
+++        <option name="GITHUB_WIKI_LINKS" value="true" />
+++        <option name="JEKYLL_FRONT_MATTER" value="false" />
+++        <option name="SIM_TOC_BLANK_LINE_SPACER" value="true" />
+++      </ParserOptions>
+++    </ParserSettings>
+++    <HtmlSettings headerTopEnabled="false" headerBottomEnabled="false" bodyTopEnabled="false" bodyBottomEnabled="false" embedUrlContent="false" addPageHeader="true">
+++      <GeneratorProvider>
+++        <provider providerId="com.vladsch.idea.multimarkdown.editor.swing.html.generator" providerName="Default Swing HTML Generator" />
+++      </GeneratorProvider>
+++      <headerTop />
+++      <headerBottom />
+++      <bodyTop />
+++      <bodyBottom />
+++    </HtmlSettings>
+++    <CssSettings previewScheme="UI_SCHEME" cssUri="" isCssUriEnabled="false" isCssTextEnabled="false" isDynamicPageWidth="true">
+++      <StylesheetProvider>
+++        <provider providerId="com.vladsch.idea.multimarkdown.editor.swing.html.css" providerName="Default Swing Stylesheet" />
+++      </StylesheetProvider>
+++      <ScriptProviders />
+++      <cssText />
+++    </CssSettings>
+++    <HtmlExportSettings updateOnSave="false" parentDir="$ProjectFileDir$" targetDir="$ProjectFileDir$" cssDir="" scriptDir="" plainHtml="false" imageDir="" copyLinkedImages="false" imageUniquifyType="0" targetExt="" useTargetExt="false" noCssNoScripts="false" linkToExportedHtml="true" exportOnSettingsChange="true" regenerateOnProjectOpen="false" />
+++    <LinkMapSettings>
+++      <textMaps />
+++    </LinkMapSettings>
+++  </component>
+++</project>
++\ No newline at end of file
++Index: app/src/main/java/com/example/jhon/venue/Fragment/MapFragment.java
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++--- app/src/main/java/com/example/jhon/venue/Fragment/MapFragment.java	(revision aa2485d9bf39f753d9a24b587d6a430d00c063eb)
+++++ app/src/main/java/com/example/jhon/venue/Fragment/MapFragment.java	(revision )
++@@ -78,7 +78,6 @@
++     private AMap aMap = null;
++     private ArrayList<MarkerOptions> list=new ArrayList<>();
++     private List<Story> stories=null;
++-    private MapUtil mapUtil;
++ 
++     private Location location;
++ 
++@@ -113,7 +112,9 @@
++         GetModle.getLocation(getContext(), new ParseListener() {
++             @Override
++             public void error(Exception e) {
++-
+++                ShowUtil.showToast(getContext().getApplicationContext(),"出错了");
+++                fabChange.setClickable(true);
+++                fabChange.setEnabled(true);
++             }
++ 
++             @Override
++@@ -125,10 +126,7 @@
++                     stories.clear();
++                     stories.addAll(JsonUtil.stringToList(JsonUtil.getString("list", JsonUtil.getEntity(response.toString())),Story.class));
++                 }
++-                if (mapUtil==null){
++-                    mapUtil=MapUtil.newInstance();
++-                }
++-                mapUtil.addMarker(getContext(), stories, aMap, new MapUtil.OnMarkerClicked() {
+++                MapUtil.newInstance().addMarker(getContext(), stories, aMap, new MapUtil.OnMarkerClicked() {
++                     @Override
++                     public void onClick(Marker marker) {
++                         marker.setAnimation(new AlphaAnimation(1f,0.5f));
++@@ -144,12 +142,14 @@
++                     public void onSuccess() {
++                         fabChange.setClickable(true);
++                         fabChange.setEnabled(true);
+++                        MapUtil.newInstance().clear();
++                     }
++ 
++                     @Override
++                     public void onError(Exception e) {
++                         fabChange.setClickable(true);
++                         fabChange.setEnabled(true);
+++                        MapUtil.newInstance().clear();
++                     }
++                 });
++             }
++Index: app/src/main/java/com/example/jhon/venue/Bean/EyeOn.java
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++--- app/src/main/java/com/example/jhon/venue/Bean/EyeOn.java	(revision )
+++++ app/src/main/java/com/example/jhon/venue/Bean/EyeOn.java	(revision )
++@@ -0,0 +1,17 @@
+++package com.example.jhon.venue.Bean;
+++
+++/**
+++ * Created by John on 2017/4/19.
+++ */
+++
+++public class EyeOn {
+++    private String username;
+++
+++    public String getUsername() {
+++        return username;
+++    }
+++
+++    public void setUsername(String username) {
+++        this.username = username;
+++    }
+++}
++Index: app/src/main/java/com/example/jhon/venue/Util/NormalLoadPicUtil.java
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++--- app/src/main/java/com/example/jhon/venue/Util/NormalLoadPicUtil.java	(revision )
+++++ app/src/main/java/com/example/jhon/venue/Util/NormalLoadPicUtil.java	(revision )
++@@ -0,0 +1,82 @@
+++package com.example.jhon.venue.Util;
+++
+++import android.annotation.SuppressLint;
+++import android.graphics.Bitmap;
+++import android.graphics.BitmapFactory;
+++import android.os.Handler;
+++import android.os.Message;
+++import android.util.Log;
+++import android.widget.ImageView;
+++
+++import com.example.jhon.venue.Interface.JudgeListener;
+++
+++import java.io.ByteArrayOutputStream;
+++import java.io.IOException;
+++import java.io.InputStream;
+++import java.net.HttpURLConnection;
+++import java.net.MalformedURLException;
+++import java.net.URL;
+++
+++/**
+++ * Created by John on 2017/4/20.
+++ */
+++
+++public class NormalLoadPicUtil {
+++    private String uri;
+++    private ImageView imageView;
+++    private byte[] picByte;
+++
+++    public void getPicture(String uri, ImageView imageView, JudgeListener listener){
+++        this.uri=uri;
+++        this.imageView=imageView;
+++        new Thread(runnable).start();
+++    }
+++
+++    @SuppressLint("HandlerLeak")
+++    Handler handler =new Handler(){
+++        @Override
+++        public void handleMessage(Message msg) {
+++            super.handleMessage(msg);
+++            if (msg.what==1){
+++                if (picByte!=null){
+++                    Log.i("runnable", "handleMessage");
+++                    Bitmap bitmap= BitmapFactory.decodeByteArray(picByte,0,picByte.length);
+++                    imageView.setImageBitmap(bitmap);
+++                }
+++            }
+++        }
+++    };
+++
+++    Runnable runnable=new Runnable() {
+++        @Override
+++        public synchronized void run() {
+++            try{
+++                Log.i("runnable", "start");
+++                URL url=new URL(uri);
+++                HttpURLConnection connection= (HttpURLConnection) url.openConnection();
+++                connection.setRequestMethod("GET");
+++                connection.setReadTimeout(1000);
+++                if (connection.getResponseCode()==200){
+++                    InputStream inputStream=connection.getInputStream();
+++                    ByteArrayOutputStream bos=new ByteArrayOutputStream();
+++                    byte[] bytes=new byte[1024];
+++                    int length=-1;
+++                    while ((length=inputStream.read(bytes))!=-1){
+++                        bos.write(bytes,0,length);
+++                    }
+++                    picByte=bos.toByteArray();
+++                    bos.close();
+++                    inputStream.close();
+++
+++                    Message message=new Message();
+++                    message.what=1;
+++                    handler.sendMessage(message);
+++                }
+++            } catch (MalformedURLException e) {
+++                e.printStackTrace();
+++            } catch (IOException e) {
+++                e.printStackTrace();
+++            }
+++        }
+++    };
+++}
+diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+index 67b489d..3483464 100644
+--- a/app/src/main/AndroidManifest.xml
++++ b/app/src/main/AndroidManifest.xml
+@@ -28,6 +28,7 @@
+             android:name="com.amap.api.v2.apikey"
+             android:value="6111521ca4f52c66341a5e46326b77fa" />
+         <!-- 6111521ca4f52c66341a5e46326b77fa -->
++
+         <activity
+             android:name=".View.MainActivity"
+             android:label="@string/app_name">
+@@ -40,7 +41,12 @@
+         <activity
+             android:name=".View.LoginActivity"
+             android:theme="@style/Dialog" />
+-        <activity android:name=".View.SubmitActivity" />
++        <activity android:name=".View.SubmitActivity" >
++            <intent-filter>
++                <action android:name="com.jhon.venue"/>
++                <category android:name="android.intent.category.DEFAULT"/>
++            </intent-filter>
++        </activity>
+         <activity android:name=".View.EditorActivity" />
+         <activity android:name=".View.Detail_Activity" />
+         <activity
+diff --git a/app/src/main/java/com/example/jhon/venue/Adapter/MultipleItemQuickAdapter.java b/app/src/main/java/com/example/jhon/venue/Adapter/MultipleItemQuickAdapter.java
+index 70ff809..94c3928 100644
+--- a/app/src/main/java/com/example/jhon/venue/Adapter/MultipleItemQuickAdapter.java
++++ b/app/src/main/java/com/example/jhon/venue/Adapter/MultipleItemQuickAdapter.java
+@@ -10,17 +10,21 @@ import android.util.Log;
+ import android.view.LayoutInflater;
+ import android.view.View;
+ import android.widget.Adapter;
++import android.widget.Button;
+ import android.widget.LinearLayout;
+ 
+ import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
+ import com.chad.library.adapter.base.BaseViewHolder;
+ import com.example.jhon.venue.Bean.BeanUtil;
++import com.example.jhon.venue.Bean.EyeOn;
++import com.example.jhon.venue.Bean.Preference;
+ import com.example.jhon.venue.Bean.Story;
+ import com.example.jhon.venue.Bean.UserMessage;
+ import com.example.jhon.venue.Entity.MultipleItem;
+ import com.example.jhon.venue.Interface.JudgeListener;
+ import com.example.jhon.venue.Interface.ResultListener;
+ import com.example.jhon.venue.Modle.CommentModle;
++import com.example.jhon.venue.Modle.GetModle;
+ import com.example.jhon.venue.Modle.LoginModle;
+ import com.example.jhon.venue.R;
+ import com.example.jhon.venue.UI.ShowUtil;
+@@ -30,12 +34,17 @@ import com.example.jhon.venue.Util.TransitionHelper;
+ import com.example.jhon.venue.View.CommentActivity;
+ import com.example.jhon.venue.View.Detail_Activity;
+ import com.example.jhon.venue.View.LoginActivity;
++import com.zhy.http.okhttp.OkHttpUtils;
++import com.zhy.http.okhttp.callback.StringCallback;
+ 
+ import org.greenrobot.eventbus.EventBus;
+ 
+ import java.util.ArrayList;
+ import java.util.List;
+ 
++import okhttp3.Call;
++import okhttp3.MediaType;
++
+ /**
+  * Created by John on 2017/3/27.
+  */
+@@ -43,6 +52,8 @@ import java.util.List;
+ public class MultipleItemQuickAdapter extends BaseMultiItemQuickAdapter<MultipleItem, BaseViewHolder> {
+ 
+     private Context context;
++    private long followerId;
++    private String username;
+ 
+     /**
+      * Same as QuickAdapter#QuickAdapter(Context,int) but with
+@@ -60,7 +71,7 @@ public class MultipleItemQuickAdapter extends BaseMultiItemQuickAdapter<Multiple
+     }
+ 
+     @Override
+-    protected void convert(BaseViewHolder helper, MultipleItem item) {
++    protected void convert(final BaseViewHolder helper, MultipleItem item) {
+         Log.d("xyxxyx","convert");
+         switch (helper.getItemViewType()) {
+             case MultipleItem.TITLE:
+@@ -69,8 +80,86 @@ public class MultipleItemQuickAdapter extends BaseMultiItemQuickAdapter<Multiple
+                 break;
+             case MultipleItem.USER:
+                 getUser(helper, Integer.parseInt(item.getContent()));
+-//                helper.setText(R.id.img_detail_user,item.getContent());
+-//                helper.setImageUrl(R.id.tv, item.getContent());
++                helper.getView(R.id.btn_follow).setOnClickListener(new View.OnClickListener() {
++                    @Override
++                    public void onClick(final View v) {
++                        if (((Button)helper.getView(R.id.btn_follow)).getText().equals("关注")) {
++                            eyeOn(new JudgeListener() {
++                                @Override
++                                public void onSuccess() {
++                                    ShowUtil.showSnack(v,"已关注");
++                                    helper.setText(R.id.btn_follow,"已关注");
++                                    getEyeOn(context, new ResultListener() {
++                                        @Override
++                                        public void error(Exception e) {
++                                            ShowUtil.showSnack(v,e.getMessage());
++                                            helper.setText(R.id.tv_eyeon,"获取失败");
++                                        }
++
++                                        @Override
++                                        public void parseJson(Object object) {
++                                            List<EyeOn> list= (List<EyeOn>) object;
++                                            if (list!=null){
++                                                StringBuffer sb=new StringBuffer();
++                                                for (EyeOn eyeOn:list){
++                                                    sb.append(eyeOn.getUsername());
++                                                    sb.append(",");
++                                                }
++                                                helper.setText(R.id.tv_eyeon,sb.toString());
++                                                notifyDataSetChanged();
++                                            }else {
++                                                helper.setText(R.id.tv_eyeon,"尚无");
++                                            }
++
++                                        }
++                                    });
++                                }
++
++                                @Override
++                                public void onError(Exception e) {
++                                    ShowUtil.showSnack(v,e.getMessage());
++                                }
++                            });
++                        }else {
++                            notEyeOn(new JudgeListener() {
++                                @Override
++                                public void onSuccess() {
++                                    ShowUtil.showSnack(v,"已取消关注");
++                                    helper.setText(R.id.btn_follow,"关注");
++                                    getEyeOn(context, new ResultListener() {
++                                        @Override
++                                        public void error(Exception e) {
++                                            ShowUtil.showSnack(v,e.getMessage());
++                                            helper.setText(R.id.tv_eyeon,"获取失败");
++                                        }
++
++                                        @Override
++                                        public void parseJson(Object object) {
++                                            List<EyeOn> list= (List<EyeOn>) object;
++                                            if (list!=null){
++                                                StringBuffer sb=new StringBuffer();
++                                                for (EyeOn eyeOn:list){
++                                                    sb.append(eyeOn.getUsername());
++                                                    sb.append(",");
++                                                }
++                                                helper.setText(R.id.tv_eyeon,sb.toString());
++                                                notifyDataSetChanged();
++                                            }else {
++                                                helper.setText(R.id.tv_eyeon,"尚无");
++                                            }
++                                        }
++                                    });
++                                }
++
++                                @Override
++                                public void onError(Exception e) {
++                                    ShowUtil.showSnack(v,e.getMessage());
++                                }
++                            });
++                        }
++
++                    }
++                });
+                 break;
+             case MultipleItem.CONTENT:
+                     helper.setText(R.id.tv_detail_content,item.getContent());
+@@ -88,6 +177,8 @@ public class MultipleItemQuickAdapter extends BaseMultiItemQuickAdapter<Multiple
+             @Override
+             public void onSuccess() {
+                 helper.setText(R.id.tv_detail_name, BeanUtil.getUserMessage().getNickname());
++                followerId=BeanUtil.getUserMessage().getId();
++                username=BeanUtil.getUserMessage().getUsername();
+             }
+ 
+             @Override
+@@ -111,4 +202,88 @@ public class MultipleItemQuickAdapter extends BaseMultiItemQuickAdapter<Multiple
+             }
+         });
+     }
++
++    private void eyeOn(final JudgeListener listener){
++        String data="{"+"\""+"userId"+"\""+":"+ Preference.getUserId(context)+","+"\""+"followerId"+"\""+":"+"\""+followerId+"\""+"}";
++        ShowUtil.showLog("eyeOn",data);
++        OkHttpUtils.postString()
++                .url("http://119.23.142.44/api/user/follow")
++                .addHeader("Authorization", Preference.getApiToken(context))
++                .content(data)
++                .mediaType(MediaType.parse("application/json; charset=utf-8"))
++                .build()
++                .execute(new StringCallback() {
++                    @Override
++                    public void onError(Call call, Exception e, int id) {
++                        if (null!=e){
++                            listener.onError(e);
++                        }
++                    }
++
++                    @Override
++                    public void onResponse(String response, int id) {
++                        if (JsonUtil.judgeError(response)!=""){
++                            listener.onSuccess();
++                        }else {
++                            listener.onError(new Exception(JsonUtil.judgeError(response)));
++                        }
++                    }
++                });
++    }
++
++    private void notEyeOn(final JudgeListener listener){
++        String data="{"+"\""+"userId"+"\""+":"+ Preference.getUserId(context)+","+"\""+"followerId"+"\""+":"+"\""+followerId+"\""+"}";
++        ShowUtil.showLog("eyeOn",data);
++        OkHttpUtils.postString()
++                .url("http://119.23.142.44/api/user/unfollow")
++                .addHeader("Authorization", Preference.getApiToken(context))
++                .content(data)
++                .mediaType(MediaType.parse("application/json; charset=utf-8"))
++                .build()
++                .execute(new StringCallback() {
++                    @Override
++                    public void onError(Call call, Exception e, int id) {
++                        if (null!=e){
++                            listener.onError(e);
++                        }
++                    }
++
++                    @Override
++                    public void onResponse(String response, int id) {
++                        if (JsonUtil.judgeError(response)!=""){
++                            listener.onSuccess();
++                        }else {
++                            listener.onError(new Exception(JsonUtil.judgeError(response)));
++                        }
++                    }
++                });
++    }
++
++    private void getEyeOn(Context context, final ResultListener listener){
++        Log.d("getEyeOn", "onStart ");
++        OkHttpUtils.get()
++                .url("http://119.23.142.44/api/user/follower/list?")
++                .addHeader("Authorization", Preference.getApiToken(context))
++                .addParams("username", username)
++                .addParams("start", String.valueOf(0))
++                .addParams("end", String.valueOf(10))
++                .build().execute(new StringCallback() {
++            @Override
++            public void onError(Call call, Exception e, int id) {
++                if (e!=null){
++                    listener.error(e);
++                }
++            }
++
++            @Override
++            public void onResponse(String response, int id) {
++                Log.d("getEyeOn", "onResponse: "+response.toString());
++                if (JsonUtil.judgeError(response)!=""){
++                    listener.parseJson(JsonUtil.stringToList(JsonUtil.getString("list",JsonUtil.getEntity(response.toString())),EyeOn.class));
++                }else {
++                    listener.error(new Exception(JsonUtil.judgeError(response)));
++                }
++            }
++        });
++    }
+ }
+\ No newline at end of file
+diff --git a/app/src/main/java/com/example/jhon/venue/Adapter/QuickAdapter.java b/app/src/main/java/com/example/jhon/venue/Adapter/QuickAdapter.java
+index e1f262d..b58c6a8 100644
+--- a/app/src/main/java/com/example/jhon/venue/Adapter/QuickAdapter.java
++++ b/app/src/main/java/com/example/jhon/venue/Adapter/QuickAdapter.java
+@@ -1,6 +1,7 @@
+ package com.example.jhon.venue.Adapter;
+ 
+ import android.content.Context;
++import android.graphics.drawable.Drawable;
+ import android.hardware.display.DisplayManager;
+ import android.util.DisplayMetrics;
+ import android.view.Display;
+@@ -8,6 +9,10 @@ import android.view.WindowManager;
+ import android.widget.ImageView;
+ 
+ import com.bumptech.glide.Glide;
++import com.bumptech.glide.request.Request;
++import com.bumptech.glide.request.animation.GlideAnimation;
++import com.bumptech.glide.request.target.SizeReadyCallback;
++import com.bumptech.glide.request.target.Target;
+ import com.chad.library.adapter.base.BaseQuickAdapter;
+ import com.chad.library.adapter.base.BaseViewHolder;
+ import com.example.jhon.venue.Bean.Story;
+@@ -43,7 +48,9 @@ public class QuickAdapter extends BaseQuickAdapter<Story, BaseViewHolder> {
+         ImageView kenBurnsView=((ImageView)helper.getView(R.id.imageKenBurns));
+ 
+         Glide.with(context).load(VenueAPI.DownloadFileUrl+item.getCover())
+-                .placeholder(R.drawable.tesst).override(ScreenUtil.getScreenWidth(context),ScreenUtil.getScreenHeight(context)/3).centerCrop().into(kenBurnsView);
++                .placeholder(R.drawable.tesst)
++                .override(ScreenUtil.getScreenWidth(context),ScreenUtil.getScreenHeight(context)/3)
++                .centerCrop().into(kenBurnsView);
+ //        kenBurnsView.setImageResource(R.drawable.material_design_1);
+     }
+ }
+diff --git a/app/src/main/java/com/example/jhon/venue/Bean/EyeOn.java b/app/src/main/java/com/example/jhon/venue/Bean/EyeOn.java
+new file mode 100644
+index 0000000..5c3e5c3
+--- /dev/null
++++ b/app/src/main/java/com/example/jhon/venue/Bean/EyeOn.java
+@@ -0,0 +1,17 @@
++package com.example.jhon.venue.Bean;
++
++/**
++ * Created by John on 2017/4/19.
++ */
++
++public class EyeOn {
++    private String username;
++
++    public String getUsername() {
++        return username;
++    }
++
++    public void setUsername(String username) {
++        this.username = username;
++    }
++}
+diff --git a/app/src/main/java/com/example/jhon/venue/Fragment/MapFragment.java b/app/src/main/java/com/example/jhon/venue/Fragment/MapFragment.java
+index 037c783..e5e719f 100644
+--- a/app/src/main/java/com/example/jhon/venue/Fragment/MapFragment.java
++++ b/app/src/main/java/com/example/jhon/venue/Fragment/MapFragment.java
+@@ -78,7 +78,6 @@ public class MapFragment extends Fragment {
+     private AMap aMap = null;
+     private ArrayList<MarkerOptions> list=new ArrayList<>();
+     private List<Story> stories=null;
+-    private MapUtil mapUtil;
+ 
+     private Location location;
+ 
+@@ -113,7 +112,9 @@ public class MapFragment extends Fragment {
+         GetModle.getLocation(getContext(), new ParseListener() {
+             @Override
+             public void error(Exception e) {
+-
++                ShowUtil.showToast(getContext().getApplicationContext(),"出错了");
++                fabChange.setClickable(true);
++                fabChange.setEnabled(true);
+             }
+ 
+             @Override
+@@ -125,10 +126,7 @@ public class MapFragment extends Fragment {
+                     stories.clear();
+                     stories.addAll(JsonUtil.stringToList(JsonUtil.getString("list", JsonUtil.getEntity(response.toString())),Story.class));
+                 }
+-                if (mapUtil==null){
+-                    mapUtil=MapUtil.newInstance();
+-                }
+-                mapUtil.addMarker(getContext(), stories, aMap, new MapUtil.OnMarkerClicked() {
++                MapUtil.newInstance().addMarker(getContext(), stories, aMap, new MapUtil.OnMarkerClicked() {
+                     @Override
+                     public void onClick(Marker marker) {
+                         marker.setAnimation(new AlphaAnimation(1f,0.5f));
+@@ -144,12 +142,14 @@ public class MapFragment extends Fragment {
+                     public void onSuccess() {
+                         fabChange.setClickable(true);
+                         fabChange.setEnabled(true);
++                        MapUtil.newInstance().clear();
+                     }
+ 
+                     @Override
+                     public void onError(Exception e) {
+                         fabChange.setClickable(true);
+                         fabChange.setEnabled(true);
++                        MapUtil.newInstance().clear();
+                     }
+                 });
+             }
+diff --git a/app/src/main/java/com/example/jhon/venue/Map/MapUtil.java b/app/src/main/java/com/example/jhon/venue/Map/MapUtil.java
+index db52216..74f0f74 100644
+--- a/app/src/main/java/com/example/jhon/venue/Map/MapUtil.java
++++ b/app/src/main/java/com/example/jhon/venue/Map/MapUtil.java
+@@ -2,18 +2,14 @@ package com.example.jhon.venue.Map;
+ 
+ import android.content.Context;
+ import android.graphics.Bitmap;
+-import android.graphics.Color;
+-import android.os.Bundle;
+ import android.util.Pair;
+ import android.view.LayoutInflater;
+ import android.view.View;
+-import android.widget.ImageView;
+ 
+ import com.amap.api.maps.AMap;
+ import com.amap.api.maps.CameraUpdateFactory;
+ import com.amap.api.maps.model.BitmapDescriptorFactory;
+ import com.amap.api.maps.model.LatLng;
+-import com.amap.api.maps.model.LatLngBounds;
+ import com.amap.api.maps.model.Marker;
+ import com.amap.api.maps.model.MarkerOptions;
+ import com.amap.api.maps.utils.SpatialRelationUtil;
+@@ -30,57 +26,83 @@ import com.example.jhon.venue.UI.ShowUtil;
+ 
+ import java.util.ArrayList;
+ import java.util.List;
++import java.util.concurrent.ExecutionException;
+ 
+ /**
+  * Created by John on 2017/4/16.
+  */
+ 
+ public class MapUtil {
++    private static MapUtil mapUtil=null;
+     public static MapUtil newInstance() {
+-
+-        Bundle args = new Bundle();
+-
+-        MapUtil map = new MapUtil();
+-        return map;
++        if (mapUtil == null) {
++//            synchronized (MapUtil.class){
++//                if (mapUtil==null){
++                    mapUtil = new MapUtil();
++//                }
++//            }
++        }
++        return mapUtil;
+     }
+ 
+-    private int num=0;
++    private static int num=0;
+     public void addMarker(final Context context, final List<Story> stories, final AMap aMap, final OnMarkerClicked onMarkerClicked,
+                                  final JudgeListener listener){
+         for ( int i=0;i<stories.size();i++){
+             Glide.with(context).load(VenueAPI.DownloadFileUrl+stories.get(i).getCover()).asBitmap()
+-                    .override(35,35).into(new SimpleTarget<Bitmap>() {
++                    .override(35,35).into(new SimpleTarget<Bitmap>(35,35) {
+                 @Override
+                 public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
+-                    View view = LayoutInflater.from(context).inflate(R.layout.map_item, null);
+-                    CircleImageView imageView = (CircleImageView) view.findViewById(R.id.img_map);
+-                    imageView.setImageBitmap(resource);
+-                    MarkerOptions marker=new MarkerOptions();
+-                    marker.position(new LatLng(stories.get(num).getLatitude(),stories.get(num).getLongitude()));
+-                    marker.title(String.valueOf(num));
+-                    marker.icon(BitmapDescriptorFactory.fromView(view));
+-                    aMap.addMarker(marker);
+-                    aMap.setOnMarkerClickListener(new AMap.OnMarkerClickListener() {
+-                        @Override
+-                        public boolean onMarkerClick(Marker marker) {
+-                            onMarkerClicked.onClick(marker);
+-                            return true;
+-                        }
+-                    });
+-                    num++;
+-                    if (num==stories.size()-1){
+-                        listener.onSuccess();
+-                        num=0;
+-                    }
+-                    ShowUtil.showLog("complete","OnSuccess");
+-                    ShowUtil.showLog("complete","OnSuccess"+num);
++//                    synchronized (MapUtil.class){
++                        addPic(context, resource, stories, aMap, new OnMarkerClicked() {
++                            @Override
++                            public void onClick(Marker marker) {
++                                onMarkerClicked.onClick(marker);
++                            }
++                        }, new JudgeListener() {
++                            @Override
++                            public void onSuccess() {
++                                listener.onSuccess();
++                            }
++
++                            @Override
++                            public void onError(Exception e) {
++                                listener.onError(e);
++                            }
++                        });
++//                    }
+                 }
+             });
+         }
+     }
+ 
+-    public MapUtil clear(){
+-        return null;
++    private void addPic(Context context,Bitmap resource,List<Story> stories,AMap aMap,final OnMarkerClicked onMarkerClicked,
++                        final JudgeListener listener){
++        View view = LayoutInflater.from(context).inflate(R.layout.map_item, null);
++        CircleImageView imageView = (CircleImageView) view.findViewById(R.id.img_map);
++        imageView.setImageBitmap(resource);
++        MarkerOptions marker=new MarkerOptions();
++        marker.position(new LatLng(stories.get(num).getLatitude(),stories.get(num).getLongitude()));
++        marker.title(String.valueOf(num));
++        marker.icon(BitmapDescriptorFactory.fromView(view));
++        aMap.addMarker(marker);
++        aMap.setOnMarkerClickListener(new AMap.OnMarkerClickListener() {
++            @Override
++            public boolean onMarkerClick(Marker marker) {
++                onMarkerClicked.onClick(marker);
++                return true;
++            }
++        });
++        num++;
++        if (num==stories.size()-1){
++            listener.onSuccess();
++        }
++        ShowUtil.showLog("complete","OnSuccess");
++        ShowUtil.showLog("complete","OnSuccess"+num);
++    }
++
++    public void clear(){
++        num=0;
+     }
+ 
+     public interface OnMarkerClicked{
+diff --git a/app/src/main/java/com/example/jhon/venue/Modle/GetModle.java b/app/src/main/java/com/example/jhon/venue/Modle/GetModle.java
+index 746edd1..71c6f7e 100644
+--- a/app/src/main/java/com/example/jhon/venue/Modle/GetModle.java
++++ b/app/src/main/java/com/example/jhon/venue/Modle/GetModle.java
+@@ -4,10 +4,12 @@ import android.content.Context;
+ import android.util.Log;
+ 
+ import com.example.jhon.venue.Bean.BeanUtil;
++import com.example.jhon.venue.Bean.EyeOn;
+ import com.example.jhon.venue.Bean.Preference;
+ import com.example.jhon.venue.Bean.Story;
+ import com.example.jhon.venue.Interface.JudgeListener;
+ import com.example.jhon.venue.Interface.ParseListener;
++import com.example.jhon.venue.Interface.ResultListener;
+ import com.example.jhon.venue.Util.JsonUtil;
+ import com.zhy.http.okhttp.OkHttpUtils;
+ import com.zhy.http.okhttp.callback.StringCallback;
+@@ -133,8 +135,6 @@ public class GetModle {
+             @Override
+             public void onResponse(String response, int id) {
+                 listener.parseJson(response.toString());
+-                Log.d("getLocation", "onResponse: "+response.toString());
+-//                JsonUtil.stringToList(JsonUtil.getString("list",JsonUtil.getEntity(response.toString())),Story.class);
+             }
+         });
+     }
+diff --git a/app/src/main/java/com/example/jhon/venue/Util/NormalLoadPicUtil.java b/app/src/main/java/com/example/jhon/venue/Util/NormalLoadPicUtil.java
+new file mode 100644
+index 0000000..c89dc72
+--- /dev/null
++++ b/app/src/main/java/com/example/jhon/venue/Util/NormalLoadPicUtil.java
+@@ -0,0 +1,82 @@
++package com.example.jhon.venue.Util;
++
++import android.annotation.SuppressLint;
++import android.graphics.Bitmap;
++import android.graphics.BitmapFactory;
++import android.os.Handler;
++import android.os.Message;
++import android.util.Log;
++import android.widget.ImageView;
++
++import com.example.jhon.venue.Interface.JudgeListener;
++
++import java.io.ByteArrayOutputStream;
++import java.io.IOException;
++import java.io.InputStream;
++import java.net.HttpURLConnection;
++import java.net.MalformedURLException;
++import java.net.URL;
++
++/**
++ * Created by John on 2017/4/20.
++ */
++
++public class NormalLoadPicUtil {
++    private String uri;
++    private ImageView imageView;
++    private byte[] picByte;
++
++    public void getPicture(String uri, ImageView imageView, JudgeListener listener){
++        this.uri=uri;
++        this.imageView=imageView;
++        new Thread(runnable).start();
++    }
++
++    @SuppressLint("HandlerLeak")
++    Handler handler =new Handler(){
++        @Override
++        public void handleMessage(Message msg) {
++            super.handleMessage(msg);
++            if (msg.what==1){
++                if (picByte!=null){
++                    Log.i("runnable", "handleMessage");
++                    Bitmap bitmap= BitmapFactory.decodeByteArray(picByte,0,picByte.length);
++                    imageView.setImageBitmap(bitmap);
++                }
++            }
++        }
++    };
++
++    Runnable runnable=new Runnable() {
++        @Override
++        public synchronized void run() {
++            try{
++                Log.i("runnable", "start");
++                URL url=new URL(uri);
++                HttpURLConnection connection= (HttpURLConnection) url.openConnection();
++                connection.setRequestMethod("GET");
++                connection.setReadTimeout(1000);
++                if (connection.getResponseCode()==200){
++                    InputStream inputStream=connection.getInputStream();
++                    ByteArrayOutputStream bos=new ByteArrayOutputStream();
++                    byte[] bytes=new byte[1024];
++                    int length=-1;
++                    while ((length=inputStream.read(bytes))!=-1){
++                        bos.write(bytes,0,length);
++                    }
++                    picByte=bos.toByteArray();
++                    bos.close();
++                    inputStream.close();
++
++                    Message message=new Message();
++                    message.what=1;
++                    handler.sendMessage(message);
++                }
++            } catch (MalformedURLException e) {
++                e.printStackTrace();
++            } catch (IOException e) {
++                e.printStackTrace();
++            }
++        }
++    };
++}
+diff --git a/app/src/main/java/com/example/jhon/venue/View/Detail_Activity.java b/app/src/main/java/com/example/jhon/venue/View/Detail_Activity.java
+index fd6ddeb..a759012 100644
+--- a/app/src/main/java/com/example/jhon/venue/View/Detail_Activity.java
++++ b/app/src/main/java/com/example/jhon/venue/View/Detail_Activity.java
+@@ -25,6 +25,7 @@ import com.example.jhon.venue.Bean.VenueAPI;
+ import com.example.jhon.venue.Entity.MultipleItem;
+ import com.example.jhon.venue.R;
+ import com.example.jhon.venue.UI.ShowUtil;
++import com.example.jhon.venue.Util.ScreenUtil;
+ import com.flaviofaria.kenburnsview.KenBurnsView;
+ 
+ import org.greenrobot.eventbus.EventBus;
+@@ -111,27 +112,8 @@ public class Detail_Activity extends BaseActivity {
+ //        ShowUtil.showToast(this,story.getTitle());
+         this.story=story;
+         Glide.with(this).load(VenueAPI.DownloadFileUrl+story.getCover())
+-                .placeholder(R.drawable.tesst).override(getScreenWidth(),getScreenHeight()/3).centerCrop().into(imgDetailBg);
+-//        Log.d("xyxxyx","sticky");
+-//        Log.d("xyxxyx","initView");
+-    }
+-
+-    @Override
+-    public void onBackPressed() {
+-        super.onBackPressed();
+-    }
+-
+-    public int getScreenWidth(){
+-        WindowManager windowManager= (WindowManager) this.getSystemService(Context.WINDOW_SERVICE);
+-        DisplayMetrics metrics=new DisplayMetrics();
+-        windowManager.getDefaultDisplay().getMetrics(metrics);
+-        return metrics.widthPixels;
+-    }
+-
+-    public int getScreenHeight(){
+-        WindowManager windowManager= (WindowManager) this.getSystemService(Context.WINDOW_SERVICE);
+-        DisplayMetrics metrics=new DisplayMetrics();
+-        windowManager.getDefaultDisplay().getMetrics(metrics);
+-        return metrics.heightPixels;
++                .placeholder(R.drawable.tesst).override(
++                        ScreenUtil.getScreenWidth(this),
++                ScreenUtil.getScreenHeight(this)/3).centerCrop().into(imgDetailBg);
+     }
+ }
+diff --git a/app/src/main/java/com/example/jhon/venue/View/MainActivity.java b/app/src/main/java/com/example/jhon/venue/View/MainActivity.java
+index 8010f8c..3d8ec14 100644
+--- a/app/src/main/java/com/example/jhon/venue/View/MainActivity.java
++++ b/app/src/main/java/com/example/jhon/venue/View/MainActivity.java
+@@ -84,7 +84,7 @@ public class MainActivity extends BaseActivity {
+                             @Override
+                             public void parseJson(String response) {
+                                 lines = JsonUtil.stringToList(JsonUtil.getString("list", JsonUtil.getEntity(response.toString())), TimeLine.class);
+-                                if (lines != null) {
++                                if (lines.size()!=0) {
+                                     BeanUtil.setTimeLine(lines.get(0));
+                                     EventBus.getDefault().postSticky(BeanUtil.getTimeLine());
+                                     ShowUtil.showToast(getApplicationContext(),BeanUtil.getTimeLine().getTitle());
+diff --git a/app/src/main/java/com/example/jhon/venue/View/SubmitActivity.java b/app/src/main/java/com/example/jhon/venue/View/SubmitActivity.java
+index 8c64e07..f6c73df 100644
+--- a/app/src/main/java/com/example/jhon/venue/View/SubmitActivity.java
++++ b/app/src/main/java/com/example/jhon/venue/View/SubmitActivity.java
+@@ -1,5 +1,7 @@
+ package com.example.jhon.venue.View;
+ 
++import android.content.BroadcastReceiver;
++import android.content.Context;
+ import android.content.DialogInterface;
+ import android.content.Intent;
+ import android.database.Cursor;
+@@ -9,6 +11,8 @@ import android.net.Uri;
+ import android.os.Bundle;
+ import android.provider.MediaStore;
+ import android.support.design.widget.Snackbar;
++import android.support.v4.app.ActivityOptionsCompat;
++import android.support.v4.util.Pair;
+ import android.support.v7.app.AlertDialog;
+ import android.util.Log;
+ import android.view.View;
+@@ -19,8 +23,10 @@ import android.widget.ImageView;
+ import android.widget.LinearLayout;
+ import android.widget.Switch;
+ import android.widget.TextView;
++import android.widget.Toast;
+ 
+ import com.bumptech.glide.Glide;
++import com.bumptech.glide.request.target.Target;
+ import com.example.jhon.venue.BaseActivity;
+ import com.example.jhon.venue.Bean.BeanUtil;
+ import com.example.jhon.venue.Bean.LocationData;
+@@ -28,12 +34,15 @@ import com.example.jhon.venue.Bean.Story;
+ import com.example.jhon.venue.Http.HttpFile;
+ import com.example.jhon.venue.Interface.JudgeListener;
+ import com.example.jhon.venue.Interface.ParseListener;
++import com.example.jhon.venue.Modle.LoginModle;
+ import com.example.jhon.venue.Modle.SubmitModle;
+ import com.example.jhon.venue.Preference.SubmitAction;
+ import com.example.jhon.venue.R;
+ import com.example.jhon.venue.UI.ShowUtil;
+ import com.example.jhon.venue.Util.JsonUtil;
++import com.example.jhon.venue.Util.NetworkUtil;
+ import com.example.jhon.venue.Util.ScreenUtil;
++import com.example.jhon.venue.Util.TransitionHelper;
+ 
+ import java.io.File;
+ 
+@@ -74,6 +83,8 @@ public class SubmitActivity extends BaseActivity implements SubmitAction.SubmitL
+         setupToolbar(true, true);
+         getToolbar().setTitle("文章编辑");
+         ButterKnife.bind(this);
++
++        get();
+     }
+ 
+     @Override
+@@ -193,6 +204,12 @@ public class SubmitActivity extends BaseActivity implements SubmitAction.SubmitL
+                                 public void onSuccess() {
+                                     story=null;
+                                     ShowUtil.showSnack(tvSubmitLocation,"发表成功了哦");
++                                    if (getIntent()!=null){
++                                        Intent intent=new Intent();
++                                        intent.putExtra("callback","GOODJOB");
++                                        setResult(13,intent);
++                                        finish();
++                                    }
+ //                                ShowUtil.showToast(SubmitActivity.this,"发表成功了哦");
+                                 }
+ 
+@@ -221,4 +238,27 @@ public class SubmitActivity extends BaseActivity implements SubmitAction.SubmitL
+     public Story getStory() {
+         return story;
+     }
++
++    private void get(){
++        final Intent intent=getIntent();
++        if (intent!=null){
++            if(NetworkUtil.isNetworkConnected(this)){
++                LoginModle.loginByApiToken(this, new JudgeListener() {
++                    @Override
++                    public void onSuccess() {
++                        imgPath=intent.getStringExtra("path");
++                        Glide.with(SubmitActivity.this).load(intent.getStringExtra("path"))
++                                .override(ScreenUtil.getScreenWidth(SubmitActivity.this), Target.SIZE_ORIGINAL)
++                                .centerCrop().into(imgSubmitBooktop);
++                        Toast.makeText(getApplicationContext(),"已登陆",Toast.LENGTH_SHORT).show();
++                    }
++
++                    @Override
++                    public void onError(Exception e) {
++                        Toast.makeText(getApplicationContext(),"登陆失败",Toast.LENGTH_SHORT).show();
++                    }
++                });
++            }
++        }
++    }
+ }
+diff --git a/app/src/main/res/layout/detail_user.xml b/app/src/main/res/layout/detail_user.xml
+index 52570a9..f44e3f7 100644
+--- a/app/src/main/res/layout/detail_user.xml
++++ b/app/src/main/res/layout/detail_user.xml
+@@ -5,39 +5,56 @@
+     android:layout_height="wrap_content"
+     android:layout_marginStart="10dp"
+     android:layout_marginEnd="10dp"
+-    xmlns:app="http://schemas.android.com/apk/res-auto"
+     card_view:cardCornerRadius="0dp"
+     card_view:cardElevation="0.5dp">
+-
+-    <RelativeLayout
++    <LinearLayout
++        android:orientation="vertical"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent">
+-        <com.example.jhon.venue.UI.CircleImageView
+-            android:id="@+id/img_detail_user"
+-            android:scaleType="centerCrop"
+-            android:src="@drawable/bg_person"
+-            android:layout_marginStart="10dp"
+-            android:layout_marginTop="10dp"
+-            android:layout_marginEnd="5dp"
+-            android:layout_marginBottom="10dp"
+-            android:layout_width="50dp"
+-            android:layout_height="50dp" />
++        <RelativeLayout
++            android:layout_width="match_parent"
++            android:layout_height="match_parent">
++            <com.example.jhon.venue.UI.CircleImageView
++                android:id="@+id/img_detail_user"
++                android:scaleType="centerCrop"
++                android:src="@drawable/bg_person"
++                android:layout_marginStart="10dp"
++                android:layout_marginTop="10dp"
++                android:layout_marginEnd="5dp"
++                android:layout_marginBottom="10dp"
++                android:layout_width="50dp"
++                android:layout_height="50dp" />
++            <TextView
++                android:id="@+id/tv_detail_name"
++                android:layout_centerVertical="true"
++                android:layout_toEndOf="@+id/img_detail_user"
++                android:text="@string/app_name"
++                android:textSize="25dp"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content" />
++            <Button
++                android:id="@+id/btn_follow"
++                android:text="关注"
++                android:layout_marginEnd="10dp"
++                android:layout_alignParentEnd="true"
++                android:layout_centerVertical="true"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content" />
++
++        </RelativeLayout>
+         <TextView
+-            android:id="@+id/tv_detail_name"
+-            android:layout_centerVertical="true"
+-            android:layout_toEndOf="@+id/img_detail_user"
+-            android:text="@string/app_name"
+-            android:textSize="25dp"
++            android:layout_marginStart="10dp"
++            android:text="已关注此用户的人："
++            android:textSize="15dp"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content" />
+-        <Button
+-            android:id="@+id/btn_follow"
+-            android:text="关注"
+-            android:layout_marginEnd="10dp"
+-            android:layout_alignParentEnd="true"
+-            android:layout_centerVertical="true"
++        <TextView
++            android:id="@+id/tv_eyeon"
++            android:layout_marginStart="10dp"
++            android:ellipsize="end"
++            android:textSize="10dp"
++            android:text="无"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content" />
+-    </RelativeLayout>
+-
++    </LinearLayout>
+ </android.support.v7.widget.CardView>

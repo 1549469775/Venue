@@ -55,6 +55,9 @@
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".View.CommentActivity"/>
         <activity android:name=".View.AboutActivity"/>
+        <activity android:name=".View.SettingActivity"
+            />
+        <activity android:name=".View.CollectActivity"/>
     </application>
 
 </manifest>

@@ -25,6 +25,7 @@ import com.example.jhon.venue.R;
 import com.example.jhon.venue.UI.CircleImageView;
 import com.example.jhon.venue.Util.TransitionHelper;
 import com.example.jhon.venue.View.AboutActivity;
+import com.example.jhon.venue.View.CollectActivity;
 import com.example.jhon.venue.View.EditorActivity;
 import com.example.jhon.venue.View.LoginActivity;
 import com.example.jhon.venue.View.TimeLineActivity;
@@ -120,7 +121,7 @@ public class PersonFragment extends Fragment {
                 Snackbar.make(view, "" + view.getId(), Snackbar.LENGTH_SHORT).show();
                 break;
             case R.id.person_collect:
-                Snackbar.make(view, "" + view.getId(), Snackbar.LENGTH_SHORT).show();
+                startActivity(new Intent(getContext(), CollectActivity.class));
                 break;
             case R.id.person_timeline:
                 if (LoginModle.isLogin()){

@@ -1,5 +1,6 @@
 package com.example.jhon.venue.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 
 import com.example.jhon.venue.Adapter.PageAdapter;
 import com.example.jhon.venue.R;
+import com.example.jhon.venue.View.SettingActivity;
 
 import java.util.ArrayList;
 
@@ -82,6 +84,7 @@ public class ScanFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.navigation_grid:
+                startActivity(new Intent(getContext(), SettingActivity.class));
                 Snackbar.make(view,"sas",Snackbar.LENGTH_SHORT).show();
                 break;
         }
