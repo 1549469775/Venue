@@ -1,6 +1,7 @@
 package com.example.jhon.venue.View;
 
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -34,6 +35,8 @@ public class AboutActivity extends BaseActivity implements View.OnTouchListener 
     @BindView(R.id.img_down)
     ImageView imgDown;
 
+    private View view;
+
     private int lastX;
     private int lastY;
 
@@ -41,6 +44,7 @@ public class AboutActivity extends BaseActivity implements View.OnTouchListener 
     public void initView() {
         setContentView(R.layout.about);
         ButterKnife.bind(this);
+        view=getWindow().getDecorView();
         Glide.with(this).load(R.drawable.img_head).asBitmap().into(imgAboutPerson);
         Glide.with(this).load(R.drawable.img_head).asBitmap().into(imgAboutPersonRight);
         imgAboutPerson.setOnTouchListener(this);
@@ -60,6 +64,7 @@ public class AboutActivity extends BaseActivity implements View.OnTouchListener 
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
+        ShowUtil.showSnack(v,"sdasda");
         if (v.getId() == R.id.img_about_person) {
             int action = event.getAction();
             switch (action) {

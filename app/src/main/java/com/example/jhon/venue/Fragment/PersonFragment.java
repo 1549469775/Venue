@@ -28,6 +28,7 @@ import com.example.jhon.venue.View.AboutActivity;
 import com.example.jhon.venue.View.CollectActivity;
 import com.example.jhon.venue.View.EditorActivity;
 import com.example.jhon.venue.View.LoginActivity;
+import com.example.jhon.venue.View.SettingActivity;
 import com.example.jhon.venue.View.TimeLineActivity;
 
 import org.greenrobot.eventbus.EventBus;
@@ -134,7 +135,7 @@ public class PersonFragment extends Fragment {
                 }
                 break;
             case R.id.person_setting:
-                Snackbar.make(view, "" + view.getId(), Snackbar.LENGTH_SHORT).show();
+                startActivity(new Intent(getContext(), SettingActivity.class));
                 break;
             case R.id.person_about:
                 Pair<View, String>[] pai = TransitionHelper.createSafeTransitionParticipants(getActivity(), true);

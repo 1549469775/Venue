@@ -5,7 +5,7 @@
     <item
         android:id="@+id/navigation_grid"
         app:showAsAction="always"
-        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:icon="@drawable/ic_search"
         android:title="@string/title_dashboard" />
 
 </menu>

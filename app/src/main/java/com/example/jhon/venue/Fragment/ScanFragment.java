@@ -50,10 +50,10 @@ public class ScanFragment extends Fragment {
         initFragments();
         initViewPager();
         mImageArray = new int[]{
-                R.mipmap.ic_launcher,
-                R.mipmap.ic_launcher,
-                R.mipmap.ic_launcher,
-                R.mipmap.ic_launcher};
+                R.drawable.tesst,
+                R.drawable.bg_person,
+                R.drawable.bg_person,
+                R.drawable.tesst};
         mColorArray = new int[]{
                 android.R.color.holo_blue_light,
                 android.R.color.holo_red_light,
@@ -84,8 +84,7 @@ public class ScanFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.navigation_grid:
-                startActivity(new Intent(getContext(), SettingActivity.class));
-                Snackbar.make(view,"sas",Snackbar.LENGTH_SHORT).show();
+
                 break;
         }
         return super.onOptionsItemSelected(item);

@@ -18,10 +18,28 @@
         <!--app:popupTheme="@style/AppTheme.PopupOverlay"  ?attr/colorPrimary-->
     </android.support.design.widget.AppBarLayout>
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_map"
+        android:elevation="10dp"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="170dp">
+    </android.support.v7.widget.RecyclerView>
+
     <com.amap.api.maps.MapView
         android:id="@+id/map"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_hide"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_marginEnd="20dp"
+        android:layout_below="@+id/rv_map"
+        android:layout_alignParentEnd="true"
+        android:layout_width="30dp"
+        android:layout_height="30dp" />
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_change"
         android:src="@drawable/ic_refresh"
